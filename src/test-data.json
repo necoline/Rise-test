@@ -1,0 +1,72 @@
+{
+    "users": [
+        {
+            "userName": "",
+            "sector": "",
+            "id": 0,
+            "email": "",
+            "registryDate": 0
+        }
+    ],
+    "students": [
+        {
+            "firstName": "",
+            "lastName": "",
+            "preferredName": "",
+            "dob": 0,
+            "id": 0,
+            "guardianName": "",
+            "gender": "",
+            "schoolClass": "",
+            "address": "",
+            "registryDate": 0,
+            "hasOpenTicket": false,
+            "hasOpenAttendanceAlert": false,
+            "hasOpenPriorityAlert": false,
+            "ticketHistory": [
+                {
+                    "ticketId": 0,
+                    "dateOpened": 0,
+                    "dateClosed": 0,
+                    "type": ""
+                }
+            ],
+            "attendanceLog": [
+                {
+                    "date": 0,
+                    "isPresent": false
+                }
+            ]
+        }
+    ],
+    "tickets": [
+        {
+            "studentName": "",
+            "studentId": 0,
+            "ticketId": 0,
+            "dateCreated": 0,
+            "ticketType": "",
+            "ticketPriority": 0,
+            "defaultPoc": "",
+            "ticketAssignments":[
+                {
+                    "username": "",
+                    "sector": "",
+                    "dateAssigned": "",
+                    "dateCompleted": 0
+                }
+            ],
+            "ticketStatus": {
+                "actionType": "assessment/response",
+                "actions": [
+                    {
+                        "isAssessed": false,
+                        "isReassigned": false,
+                        "isResolved": false
+                    }
+                ]
+            },
+            "isOpen": false
+        }
+    ]
+}

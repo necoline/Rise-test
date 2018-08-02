@@ -27,6 +27,9 @@ state = {
           onRemove={this.removeStudent}
         /> */}
         <h2>Student roster!</h2>
+        <button className="foo-button mdc-button">
+          Button
+        </button>
       </div>
     );
   }

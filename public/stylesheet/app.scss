@@ -1,6 +1,46 @@
-@import "@material/button/mdc-button";
+$mdc-theme-primary: #03a9f4;
+$mdc-theme-primary-light: #ECF6FC;
+$mdc-theme-secondary: #ffeb3b;
+$mdc-theme-on-primary: white;
+$mdc-theme-on-secondary: black;
+$mdc-typography-font-family: "Arial";
 
-.foo-button {
-  @include mdc-button-ink-color(teal);
-  @include mdc-states(teal);
+@import "@material/button/mdc-button";
+@import "@material/textfield/mdc-text-field";
+@import "@material/list/mdc-list";
+
+.submit-button {
+  margin-left: 5%;
+  @include mdc-button-ink-color($mdc-theme-on-primary);
+}
+
+.delete-btn {
+  margin-left: 80%;
+  @include mdc-button-ink-color($mdc-theme-on-primary);
+}
+
+body {
+  // padding: 5%;
+  margin: 0;
+  font-family: $mdc-typography-font-family;
+}
+
+.header {
+  background-color: $mdc-theme-primary;
+  color: $mdc-theme-on-primary;
+  width: 100%;
+  height: 10vh;
+  text-align: center
+}
+
+.content {
+  text-align: center;
+  background-color: white;
+  margin: 5% 20%;
+  background-color: $mdc-theme-primary-light;
+}
+
+.title {
+  margin: 0;
+  padding: 2vh;
 }

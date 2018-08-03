@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withAuthenticator } from 'aws-amplify-react';
 import Students from './Students';
 import NewStudent from './NewStudent';
 
@@ -36,4 +37,4 @@ state = {
   }
 }
 
-export default Landing;
+export default withAuthenticator(Landing);

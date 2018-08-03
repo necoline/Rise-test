@@ -5,7 +5,7 @@ import Landing from './Landing';
 
 const App = () => (
   <HashRouter>
-    <div className="app">
+    <div className="mdc-layout-grid app">
       <Route exact path="/" component={Landing} />
     </div>
   </HashRouter>

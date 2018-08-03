@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import Students from './Students';
+import Students from './Students';
 import NewStudent from './NewStudent';
 
 class Landing extends Component {
@@ -7,29 +7,30 @@ state = {
     students: []
   }
   
-  addStudent = student => {
+  addStudent = (student) => {
     this.setState({ students: [student, ...this.state.students] });
   };
 
-  removeStudent = student => {
+  removeStudent = studentId => {
     this.setState({
-        students: this.state.students.filter(other => other.id !== student.id),
+        students: this.state.students.filter(student => student.id !== studentId),
     });
   };
 
   render() {
     return (
-      <div className="Landing">
-        <NewStudent onSubmit={this.addStudent} />
-        {/* <Students
-          title="Roster"
-          students={this.state.students}
-          onRemove={this.removeStudent}
-        /> */}
-        <h2>Student roster!</h2>
-        <button className="foo-button mdc-button">
-          Button
-        </button>
+      <div className="mdc-layout-grid__inner body">
+        <div className="mdc-layout-grid__cell--span-1 header">
+          <h2 className="title">Welcome to RISE International</h2>
+        </div>
+        <div className="mdc-layout-grid__cell--span-1 content">
+            <NewStudent addStudent={this.addStudent} />
+            <h3>Student Roster</h3>
+            <Students
+              students={this.state.students}
+              onRemove={this.removeStudent}
+            />
+        </div>
       </div>
     );
   }

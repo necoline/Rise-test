@@ -13,6 +13,8 @@
     "@material/textfield": "^0.38.0",
     "@material/theme": "^0.38.0",
     "autoprefixer": "^9.0.2",
+    "aws-amplify": "^1.0.4",
+    "aws-amplify-react": "^1.0.4",
     "awsmobile-cli": "^1.1.5",
     "axios": "0.16.1",
     "babel-plugin-dynamic-import-webpack": "1.0.1",

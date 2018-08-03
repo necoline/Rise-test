@@ -1,7 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
+import Amplify from 'aws-amplify';
 import { HashRouter, Route } from 'react-router-dom';
 import Landing from './Landing';
+import configuration from './aws-exports';
+
+Amplify.configure(configuration);
 
 const App = () => (
   <HashRouter>

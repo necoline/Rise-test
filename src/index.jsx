@@ -1,14 +1,24 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { HashRouter, Route } from 'react-router-dom';
-import Landing from './Landing';
+import Amplify from 'aws-amplify';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
+import configuration from './aws-exports';
 
-const App = () => (
-  <HashRouter>
-    <div className="mdc-layout-grid app">
-      <Route exact path="/" component={Landing} />
-    </div>
-  </HashRouter>
-);
+Amplify.configure(configuration);
 
-render(<App />, document.getElementById('app'));
+const renderApp = () => {
+  render(
+    <BrowserRouter key={Math.random()}>
+      <App />
+    </BrowserRouter>,
+    document.getElementById('app')
+  );
+};
+renderApp();
+
+if (module.hot) {
+  module.hot.accept('./App', () => {
+    renderApp();
+  });
+}

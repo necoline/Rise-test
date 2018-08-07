@@ -1,39 +1,25 @@
-import React, { Component } from 'react';
-import Students from './Students';
-import NewStudent from './NewStudent';
+import React from 'react';
+import { withAuthenticator } from 'aws-amplify-react';
+import { Link } from "react-router-dom";
+import Header from './Header';
 
-class Landing extends Component {
-state = {
-    students: []
-  }
-  
-  addStudent = (student) => {
-    this.setState({ students: [student, ...this.state.students] });
-  };
-
-  removeStudent = studentId => {
-    this.setState({
-        students: this.state.students.filter(student => student.id !== studentId),
-    });
-  };
-
-  render() {
-    return (
-      <div className="mdc-layout-grid__inner body">
-        <div className="mdc-layout-grid__cell--span-1 header">
-          <h2 className="title">Welcome to RISE International</h2>
-        </div>
-        <div className="mdc-layout-grid__cell--span-1 content">
-            <NewStudent addStudent={this.addStudent} />
-            <h3>Student Roster</h3>
-            <Students
-              students={this.state.students}
-              onRemove={this.removeStudent}
-            />
-        </div>
+const Landing = () => (
+  <div>
+    <Header />
+    <div className="mdc-layout-grid__inner body">
+      <div className="mdc-layout-grid__cell--span-1 content">
+        <Link to="/">
+          <button className="mdc-button">Attendance</button>
+        </Link>
+        <Link to="/roster">
+          <button className="mdc-button">Roster</button>
+        </Link>
+        <Link to="/">
+          <button className="mdc-button">Reports</button>
+        </Link>
       </div>
-    );
-  }
-}
+    </div>
+  </div>
+  );
 
-export default Landing;
+export default withAuthenticator(Landing);

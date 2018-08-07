@@ -34,8 +34,4 @@ Students.propTypes = {
       onRemove: PropTypes.func.isRequired,
 };
 
-// Students.defaultProps = {
-//     onRemove: () => {},
-// };
-
 export default Students;

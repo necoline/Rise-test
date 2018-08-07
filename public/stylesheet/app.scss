@@ -8,7 +8,6 @@ $mdc-typography-font-family: "Arial";
 @import "@material/button/mdc-button";
 @import "@material/textfield/mdc-text-field";
 @import "@material/list/mdc-list";
-@import "@material/top-app-bar/mdc-top-app-bar";
 
 .submit-button {
   margin-left: 5%;
@@ -26,6 +25,14 @@ body {
   font-family: $mdc-typography-font-family;
 }
 
+.header {
+  background-color: $mdc-theme-primary;
+  color: $mdc-theme-on-primary;
+  width: 100%;
+  height: 10vh;
+  text-align: center
+}
+
 .content {
   text-align: center;
   background-color: white;
@@ -36,8 +43,4 @@ body {
 .title {
   margin: 0;
   padding: 2vh;
-}
-
-.right {
-  text-align: right
 }

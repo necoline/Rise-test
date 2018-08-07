@@ -1,16 +1,9 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
-const webpack = require('webpack');
 
-const config = {
+module.exports = {
   context: __dirname,
-  entry: [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
-    './public/stylesheet/app.scss',
-    './src/index.jsx'
-  ],
+  entry: ['./public/stylesheet/app.scss', './src/index.jsx'],
   devtool: 'cheap-eval-source-map',
   output: {
     path: path.join(__dirname, 'public'),
@@ -27,7 +20,6 @@ const config = {
     reasons: true,
     chunks: true
   },
-  plugins: [new webpack.HotModuleReplacementPlugin(), new webpack.NamedModulesPlugin()],
   module: {
     rules: [
       {
@@ -66,11 +58,3 @@ const config = {
     ]
   }
 };
-
-if (process.env.NODE_ENV === 'production') {
-  config.entry = './src/index.jsx';
-  config.devtool = false;
-  config.plugins = [];
-}
-
-module.exports = config;

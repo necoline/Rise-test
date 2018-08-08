@@ -6,24 +6,24 @@ import Header from './Header';
 const Landing = () => (
   <div>
     <Header />
-  <div className="mdc-layout-grid container">
-    <div className="mdc-layout-grid__inner">
-      <div className="mdc-layout-grid__cell">
-        <Link to="/">
-          <button className="mdc-button--raised">Attendance</button>
-        </Link>
+    <div className="mdc-layout-grid container">
+      <div className="mdc-layout-grid__inner">
+        <div className="mdc-layout-grid__cell row">
+          <Link to="/">
+            <button className="mdc-button mdc-button--raised">Attendance</button>
+          </Link>
+        </div>
+        <div className="mdc-layout-grid__cell row">
+          <Link to="/roster">
+            <button className="mdc-button mdc-button--raised">Roster</button>
+          </Link>
+        </div>
+        <div className="mdc-layout-grid__cell row">
+          <Link to="/">
+            <button className="mdc-button mdc-button--raised">Reports</button>
+          </Link>
+        </div>
       </div>
-      <div className="mdc-layout-grid__cell">
-        <Link to="/roster">
-          <button className="mdc-button--raised">Roster</button>
-        </Link>
-      </div>
-      <div className="mdc-layout-grid__cell">
-        <Link to="/">
-          <button className="mdc-button--raised">Reports</button>
-        </Link>
-      </div>
-    </div>
     </div>
   </div>
   );

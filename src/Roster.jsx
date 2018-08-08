@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withAuthenticator } from 'aws-amplify-react';
 import { API } from 'aws-amplify';
 import Students from './Students';
-import NewStudent from './NewStudent';
+import Header from './Header';
 
 class Roster extends Component {
 state = {
@@ -31,17 +31,16 @@ state = {
 
   render() {
     return (
-      <div className="mdc-layout-grid__inner body">
-        <div className="mdc-layout-grid__cell--span-1">
-          <h2 className="title">Welcome to RISE International</h2>
-        </div>
-        <div className="mdc-layout-grid__cell--span-1">
-            <NewStudent addStudent={this.addStudent} />
-            <h3>Student Roster</h3>
-            <Students
-              students={this.state.students}
-              onRemove={this.removeStudent}
-            />
+      <div>
+        <Header />
+        <div className="mdc-layout-grid container">
+          <div className="mdc-layout-grid__inner">
+            <div className="mdc-layout-grid__cell row">
+              {/* <NewStudent addStudent={this.addStudent} />
+              <h3>Student Roster</h3> */}
+              <Students students={this.state.students} />
+            </div>
+          </div>
         </div>
       </div>
     );

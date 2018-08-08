@@ -15,9 +15,17 @@ body {
   font-family: $mdc-typography-font-family;
 }
 
+a {
+  text-decoration: none;
+}
+
 .container {
   padding-top: 100px;
   text-align: center;
+}
+
+.row {
+  margin: 20px 0;
 }
 
 .submit-button {

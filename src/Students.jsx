@@ -6,18 +6,18 @@ class Students extends Component {
     nothing = () => {}
 
   render() {
-      const { onRemove, students } = this.props;
+      const { students } = this.props;
     return (
         <ul className="mdc-list">              
         {students.map( student => 
             <li className="mdc-layout-grid__inner mdc-list-item" key={student.id}>
             {student.lastName}, {student.firstName}
-            <button 
-                className="delete-btn mdc-button red mdc-button--raised"
-                onClick={() => onRemove(student.id)}> 
-                Delete</button>
+                <div className="mdc-list-item__meta">
+                    <i className="material-icons">lens</i>
+                </div>
             </li>
-        )}      
+        )}     
+        <li role="separator" className="mdc-list-divider"/> 
         </ul>
         )
     }
@@ -31,11 +31,6 @@ Students.propTypes = {
           id: PropTypes.string.isRequired,
         }),
       ).isRequired,
-      onRemove: PropTypes.func.isRequired,
 };
-
-// Students.defaultProps = {
-//     onRemove: () => {},
-// };
 
 export default Students;

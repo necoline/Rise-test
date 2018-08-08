@@ -32,10 +32,10 @@ state = {
   render() {
     return (
       <div className="mdc-layout-grid__inner body">
-        <div className="mdc-layout-grid__cell--span-1 header">
+        <div className="mdc-layout-grid__cell--span-1">
           <h2 className="title">Welcome to RISE International</h2>
         </div>
-        <div className="mdc-layout-grid__cell--span-1 content">
+        <div className="mdc-layout-grid__cell--span-1">
             <NewStudent addStudent={this.addStudent} />
             <h3>Student Roster</h3>
             <Students

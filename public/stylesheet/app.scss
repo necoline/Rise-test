@@ -8,6 +8,17 @@ $mdc-typography-font-family: "Arial";
 @import "@material/button/mdc-button";
 @import "@material/textfield/mdc-text-field";
 @import "@material/list/mdc-list";
+@import "@material/top-app-bar/mdc-top-app-bar";
+
+body {
+  margin: 0;
+  font-family: $mdc-typography-font-family;
+}
+
+.container {
+  padding-top: 100px;
+  text-align: center;
+}
 
 .submit-button {
   margin-left: 5%;
@@ -19,28 +30,8 @@ $mdc-typography-font-family: "Arial";
   @include mdc-button-ink-color($mdc-theme-on-primary);
 }
 
-body {
-  // padding: 5%;
-  margin: 0;
-  font-family: $mdc-typography-font-family;
-}
-
-.header {
-  background-color: $mdc-theme-primary;
-  color: $mdc-theme-on-primary;
-  width: 100%;
-  height: 10vh;
-  text-align: center
-}
-
-.content {
-  text-align: center;
-  background-color: white;
-  margin: 5% 20%;
-  background-color: $mdc-theme-primary-light;
-}
-
 .title {
-  margin: 0;
-  padding: 2vh;
+margin: 0 40%;
+font-size: 40px;
+color: $mdc-theme-on-primary;
 }

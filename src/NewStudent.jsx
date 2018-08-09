@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Header from './Header';
-import Form from './Form';
+import Header from './common/Header';
+import StudentForm from './StudentForm';
 
 class NewStudent extends Component {
   state = {
@@ -27,7 +27,7 @@ class NewStudent extends Component {
       <div>
         {this.renderRedirect()}
         <Header title={"New Student"}/>
-        <Form submitEntry={this.submitEntry}/>
+        <StudentForm submitEntry={this.submitEntry}/>
       </div>
     );
   }

@@ -3,7 +3,7 @@ import { withAuthenticator } from 'aws-amplify-react';
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 import Students from './Students';
-import Header from './Header';
+import Header from './common/Header';
 
 const Roster = (props) => (
   <div>
@@ -12,7 +12,7 @@ const Roster = (props) => (
       <div className="mdc-layout-grid__inner">
           <div className="mdc-layout-grid__cell--align-right">
             <Link to="/new-student">
-              <button className="mdc-fab" aria-label="add">
+              <button className="mdc-fab fab-right" aria-label="add">
                 <span className="mdc-fab__icon material-icons">add</span>
               </button>
             </Link>

@@ -23,7 +23,7 @@ a {
 }
 
 .container {
-  padding-top: 100px;
+  padding-top: 80px;
   text-align: center;
 }
 
@@ -41,7 +41,7 @@ a {
 }
 
 .fab-right {
-  float: right;
+  margin-left: 90%;
 }
 
 .title {
@@ -58,9 +58,17 @@ color: $mdc-theme-on-primary;
 }
 
 .text-field-gutter {
-  margin: 0 2%;
+  margin: 0 1%;
 }
 
 .text-field-half-width {
   width: 40%;
+}
+
+.text-field-third-width {
+  width: 25%;
+}
+
+.text-field-full-width {
+  width: 80%;
 }

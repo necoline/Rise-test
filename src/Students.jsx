@@ -1,15 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-class Students extends Component {
-
-    nothing = () => {}
-
-  render() {
-      const { students } = this.props;
-    return (
-        <ul className="mdc-list">              
-        {students.map( student => 
+const Students = (props) => (
+    <ul className="mdc-list">              
+        {props.students.map( student => 
             <li className="mdc-layout-grid__inner mdc-list-item" key={student.id}>
             {student.lastName}, {student.firstName}
                 <div className="mdc-list-item__meta">
@@ -18,10 +12,8 @@ class Students extends Component {
             </li>
         )}     
         <li role="separator" className="mdc-list-divider"/> 
-        </ul>
-        )
-    }
-};
+    </ul>
+)
 
 Students.propTypes = {
     students: PropTypes.arrayOf(

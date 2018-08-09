@@ -9,6 +9,7 @@ $mdc-typography-font-family: "Arial";
 @import "@material/textfield/mdc-text-field";
 @import "@material/list/mdc-list";
 @import "@material/top-app-bar/mdc-top-app-bar";
+@import "@material/fab/mdc-fab";
 
 body {
   margin: 0;
@@ -38,8 +39,12 @@ a {
   @include mdc-button-ink-color($mdc-theme-on-primary);
 }
 
+.fab-right {
+  float: right;
+}
+
 .title {
-margin: 0 40%;
-font-size: 40px;
+margin: 0 auto;
+font-size: 50px;
 color: $mdc-theme-on-primary;
 }

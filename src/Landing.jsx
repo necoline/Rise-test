@@ -5,7 +5,7 @@ import Header from './Header';
 
 const Landing = () => (
   <div>
-    <Header />
+    <Header title={"RISE"}/>
     <div className="mdc-layout-grid container">
       <div className="mdc-layout-grid__inner">
         <div className="mdc-layout-grid__cell row">

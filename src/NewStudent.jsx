@@ -1,57 +1,33 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Header from './Header';
+import Form from './Form';
 
 class NewStudent extends Component {
   state = {
-    firstName: '',
-    lastName: '',
-    id: '',
+    redirect: false
   };
 
-  handleFirstNameChange = event => {
-    this.setState({firstName: event.target.value})
-  };
-
-  handleLastNameChange = event => {
-    this.setState({lastName: event.target.value, id: Date.now().toString()})
-  };
-
-  clearInputs = () => {
-    this.setState({firstName: '', lastName: '', id: ''})
+  setRedirect = () => {
+    this.setState({
+      redirect: true
+    })
   }
 
-  submitEntry = (e) => {
-    e.preventDefault();
-    this.props.addStudent(this.state);
-    this.clearInputs();
+  submitEntry = (student) => {
+    this.props.addStudent(student);
+    this.setRedirect();
   }
+
+  renderRedirect = () => this.state.redirect ?  <Redirect to='/roster' /> : null;
 
   render() {
     return (
       <div>
-          <span>First Name:</span>
-          <div className="mdc-text-field">
-            <input 
-              type="text"
-              onChange={this.handleFirstNameChange}
-              value={this.state.firstName} 
-              id="my-text-field" 
-              className="mdc-text-field__input"/>
-            <div className="mdc-line-ripple"/>
-          </div>
-          <span>Last Name:</span>
-          <div className="mdc-text-field">
-            <input 
-              type="text"
-              onChange={this.handleLastNameChange} 
-              value={this.state.lastName} 
-              id="my-text-field" 
-              className="mdc-text-field__input"/>
-            <div className="mdc-line-ripple"/>
-          </div>
-        <button className="submit-button mdc-button mdc-button--raised" onClick={this.submitEntry}>
-          Add Student
-        </button>
+        {this.renderRedirect()}
+        <Header title={"New Student"}/>
+        <Form submitEntry={this.submitEntry}/>
       </div>
     );
   }

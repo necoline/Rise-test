@@ -7,6 +7,8 @@ $mdc-typography-font-family: "Arial";
 
 @import "@material/button/mdc-button";
 @import "@material/textfield/mdc-text-field";
+@import "@material/notched-outline/mdc-notched-outline";
+@import "@material/floating-label/mdc-floating-label";
 @import "@material/list/mdc-list";
 @import "@material/top-app-bar/mdc-top-app-bar";
 @import "@material/fab/mdc-fab";
@@ -30,7 +32,6 @@ a {
 }
 
 .submit-button {
-  margin-left: 5%;
   @include mdc-button-ink-color($mdc-theme-on-primary);
 }
 
@@ -47,4 +48,19 @@ a {
 margin: 0 auto;
 font-size: 50px;
 color: $mdc-theme-on-primary;
+}
+
+// ----- form ------
+
+// text field
+.above-outline {
+  margin-bottom: 10px;
+}
+
+.text-field-gutter {
+  margin: 0 2%;
+}
+
+.text-field-half-width {
+  width: 40%;
 }

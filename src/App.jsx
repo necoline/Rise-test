@@ -5,15 +5,6 @@ import Landing from './Landing';
 import Roster from './Roster';
 import NewStudent from './NewStudent';
 
-
-// const App = () => (
-//   <div className="app">
-//     <Route exact path="/" component={Landing} />
-//     <Route exact path="/roster" component={Roster} />
-//     <Route exact path="/new-student" component={NewStudent} />
-//   </div>
-// );
-
 class App extends Component {
   state = {
       students: []
@@ -45,7 +36,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route path="/roster" component={() => <Roster students={this.state.students} />}/>
-          <Route exact path="/new-student" component={NewStudent} addStudent={this.addStudent} />
+          <Route path="/new-student" component={() => <NewStudent addStudent={this.addStudent} />} />
         </Switch>
         </div>
       )

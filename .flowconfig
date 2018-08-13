@@ -1,0 +1,14 @@
+[ignore]
+<PROJECT_ROOT>/node_modules/graphql/*
+<PROJECT_ROOT>/node_modules/postcss/*
+<PROJECT_ROOT>/node_modules/ora/*
+<PROJECT_ROOT>/node_modules/log-symbols/*
+<PROJECT_ROOT>/node_modules/config-chain/*
+<PROJECT_ROOT>/node_modules/awsmobile-cli/*
+<PROJECT_ROOT>/node_modules/autoprefixer/*
+
+[include]
+
+[libs]
+
+[options]

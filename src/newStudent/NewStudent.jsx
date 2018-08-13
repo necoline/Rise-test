@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Header from './common/Header';
+import Header from '../common/Header';
 import StudentForm from './StudentForm';
 
 class NewStudent extends Component {

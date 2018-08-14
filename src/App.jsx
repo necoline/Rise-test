@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { withAuthenticator } from 'aws-amplify-react';
+import { Route, Switch} from 'react-router-dom';
 import { API } from 'aws-amplify';
 import Landing from './Landing';
 import Roster from './roster/Roster';
@@ -9,9 +9,7 @@ import Student from './roster/Student';
 
 class App extends Component {
   state = {
-      students: [],
-      student: {},
-      redirect: false
+      students: []
     }
     
     componentDidMount() {
@@ -27,7 +25,6 @@ class App extends Component {
     };
   
     removeStudent = studentId => {
-      console.log('got it', studentId)
       API.del('studentsCRUD', `/students/object/${studentId}`).then( () => {
         this.setState({
           students: this.state.students.filter(student => student.id !== studentId),
@@ -35,22 +32,17 @@ class App extends Component {
       });
     };
 
-    viewStudent = student => {
-      this.setState({ student, redirect: true });
-    }
-
-    renderRedirect = () => this.state.redirect ? <Redirect to='/roster/:id' student={this.state.student} removeStudent={this.removeStudent}/> : null
   
     render() {
+      console.log('students', this.state.students)
       return (
         <div className="app">
-        {this.renderRedirect()}
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route
             exact
             path="/roster" 
-            component={() => <Roster students={this.state.students} viewStudent={this.viewStudent}/>}/>
+            component={() => <Roster students={this.state.students}/>}/>
           <Route
             exact
             path="/student/:id"
@@ -64,12 +56,4 @@ class App extends Component {
     }
   }
 
-  App.propTypes = {
-    match: PropTypes.string
-    };
-
-    App.defaultProps = {
-      match: '',
-  };
-
-export default App;
+export default withAuthenticator(App);

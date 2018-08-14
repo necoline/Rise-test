@@ -7,9 +7,8 @@ import Header from '../common/Header';
 
 class Student extends Component {
   state = {
-    student: {}
-    // isReady: false,
-    // redirect: false
+    student: null,
+    redirect: false
    }
  
 
@@ -17,24 +16,29 @@ class Student extends Component {
     API.get('studentsCRUD', `/students/object/${this.props.match.params.id}`).then( student => {
       if(student.id){
         this.setState({ student })
-        // this.setState({ isReady: true })
       } 
     })
   }
 
-  setRedirect = () => !this.state.redirect ? <Redirect to="/roster" /> : null
+  setRedirect = () => {
+    this.setState({
+      redirect: true
+    })
+  }
 
   deleteStudent = (id) => {
-    console.log('deleting', id)
     this.props.removeStudent(id)
-    // this.setState({ redirect: true })
+    this.setRedirect();
   } 
+
+  renderRedirect = () => this.state.redirect || !this.state.student ?  <Redirect to='/roster' /> : null;
 
   render() {
     const { student } = this.state
 
     return student && (
       <div>
+        {this.renderRedirect()}
         <Header title={"Student Profile"}/>
         <div className="mdc-layout-grid container">
           <div className="mdc-layout-grid__inner">

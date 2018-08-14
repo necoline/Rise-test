@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import { withAuthenticator } from 'aws-amplify-react';
 import PropTypes from 'prop-types';
 import Header from '../common/Header';
 import StudentForm from './StudentForm';
@@ -41,4 +42,4 @@ NewStudent.defaultProps = {
   addStudent: () => {},
 };
 
-export default NewStudent;
+export default withAuthenticator(NewStudent);

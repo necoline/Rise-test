@@ -18,7 +18,7 @@ class App extends Component {
       })
     }
   
-    addStudent = student => {
+    addStudent = (student) => {
       API.post('studentsCRUD', '/students', {body: student}).then( () => {
         this.setState({ students: [student, ...this.state.students] });
       })
@@ -34,7 +34,6 @@ class App extends Component {
 
   
     render() {
-      console.log('students', this.state.students)
       return (
         <div className="app">
         <Switch>
@@ -49,7 +48,7 @@ class App extends Component {
             component={(props) => <Student removeStudent={this.removeStudent} {...props}/>}/>
           <Route 
             path="/new-student" 
-            component={() => <NewStudent addStudent={this.addStudent} />} />
+            component={() => <NewStudent addStudent={this.addStudent}/>} />
         </Switch>
         </div>
       )

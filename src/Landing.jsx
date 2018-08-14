@@ -1,22 +1,28 @@
 import React from 'react';
 import { withAuthenticator } from 'aws-amplify-react';
 import { Link } from "react-router-dom";
-import Header from './Header';
+import Header from './common/Header';
 
 const Landing = () => (
   <div>
-    <Header />
-    <div className="mdc-layout-grid__inner body">
-      <div className="mdc-layout-grid__cell--span-1 content">
-        <Link to="/">
-          <button className="mdc-button">Attendance</button>
-        </Link>
-        <Link to="/roster">
-          <button className="mdc-button">Roster</button>
-        </Link>
-        <Link to="/">
-          <button className="mdc-button">Reports</button>
-        </Link>
+    <Header title={"RISE"}/>
+    <div className="mdc-layout-grid container">
+      <div className="mdc-layout-grid__inner">
+        <div className="mdc-layout-grid__cell row">
+          <Link to="/">
+            <button className="mdc-button mdc-button--raised">Attendance</button>
+          </Link>
+        </div>
+        <div className="mdc-layout-grid__cell row">
+          <Link to="/roster">
+            <button className="mdc-button mdc-button--raised">Roster</button>
+          </Link>
+        </div>
+        <div className="mdc-layout-grid__cell row">
+          <Link to="/">
+            <button className="mdc-button mdc-button--raised">Reports</button>
+          </Link>
+        </div>
       </div>
     </div>
   </div>

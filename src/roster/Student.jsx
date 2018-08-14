@@ -1,23 +1,38 @@
 import React, { Component } from 'react';
 import { API } from 'aws-amplify';
+import { Redirect } from "react-router-dom";
 import PropTypes from 'prop-types';
 import TextField from '../common/TextField';
 import Header from '../common/Header';
 
 class Student extends Component {
   state = {
-    student: null
+    student: {}
+    // isReady: false,
+    // redirect: false
    }
  
 
   componentDidMount() {
     API.get('studentsCRUD', `/students/object/${this.props.match.params.id}`).then( student => {
-      this.setState({ student})
+      if(student.id){
+        this.setState({ student })
+        // this.setState({ isReady: true })
+      } 
     })
   }
 
+  setRedirect = () => !this.state.redirect ? <Redirect to="/roster" /> : null
+
+  deleteStudent = (id) => {
+    console.log('deleting', id)
+    this.props.removeStudent(id)
+    // this.setState({ redirect: true })
+  } 
+
   render() {
     const { student } = this.state
+
     return student && (
       <div>
         <Header title={"Student Profile"}/>
@@ -27,7 +42,7 @@ class Student extends Component {
               <button className="mdc-fab fab-toolbar" aria-label="add">
                 <span className="mdc-fab__icon material-icons">edit</span>
               </button>
-              <button className="mdc-fab fab-toolbar" aria-label="add" onClick={() => this.props.removeStudent(student.id)}>
+              <button className="mdc-fab fab-toolbar" aria-label="add" onClick={() => this.deleteStudent(student.id)}>
                 <span className="mdc-fab__icon material-icons">delete</span>
               </button>
             </div>
@@ -64,7 +79,7 @@ class Student extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 

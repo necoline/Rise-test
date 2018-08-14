@@ -27,6 +27,7 @@ class App extends Component {
     };
   
     removeStudent = studentId => {
+      console.log('got it', studentId)
       API.del('studentsCRUD', `/students/object/${studentId}`).then( () => {
         this.setState({
           students: this.state.students.filter(student => student.id !== studentId),

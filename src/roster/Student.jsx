@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
+import { API } from 'aws-amplify';
 import PropTypes from 'prop-types';
 import TextField from '../common/TextField';
 import Header from '../common/Header';
 
 class Student extends Component {
+  state = {
+    student: null
+   }
+ 
 
-nothing = () => {}
+  componentDidMount() {
+    API.get('studentsCRUD', `/students/object/${this.props.match.params.id}`).then( student => {
+      this.setState({ student})
+    })
+  }
+
   render() {
-    const { firstName, middleName, lastName, preferredName, guardianFirstName, guardianLastName} = this.props.student
-    return (
+    const { student } = this.state
+    return student && (
       <div>
         <Header title={"Student Profile"}/>
         <div className="mdc-layout-grid container">
@@ -17,39 +27,39 @@ nothing = () => {}
               <button className="mdc-fab fab-toolbar" aria-label="add">
                 <span className="mdc-fab__icon material-icons">edit</span>
               </button>
-              <button className="mdc-fab fab-toolbar" aria-label="add" onClick={this.props.removeStudent}>
+              <button className="mdc-fab fab-toolbar" aria-label="add" onClick={() => this.props.removeStudent(student.id)}>
                 <span className="mdc-fab__icon material-icons">delete</span>
               </button>
             </div>
             <div className="mdc-layout-grid__cell">
               <TextField 
-                value={firstName} 
+                value={student.firstName} 
                 label="First Name"
                 rowRatio="half"/>
               <TextField 
-                value={middleName} 
+                value={student.middleName} 
                 label="Middle Name"
                 rowRatio="half"/>
               </div>
               <div className="mdc-layout-grid__cell">
               <TextField 
-                value={lastName} 
+                value={student.lastName} 
                 label="Last Name"
                 rowRatio="half"/>
               <TextField 
-                value={preferredName} 
+                value={student.preferredName} 
                 label="Preferred Name"
                 rowRatio="half"/>
             </div>
             <div className="mdc-layout-grid__cell">
               <TextField 
-                value={guardianFirstName} 
+                value={student.guardianFirstName} 
                 label="Guardian's First Name"
                 rowRatio="half"/>
               <TextField 
-                value={guardianLastName} 
+                value={student.guardianLastName} 
                 label="Guardian's Last Name"
-                rowRatio="half"/> 
+                rowRatio="half"/>
             </div>
           </div>
         </div>
@@ -59,17 +69,11 @@ nothing = () => {}
 }
 
 Student.propTypes = {
-  student: PropTypes.shape({
-        firstName: PropTypes.string.isRequired,
-        middleName: PropTypes.string,
-        lastName: PropTypes.string.isRequired,
-        preferredName: PropTypes.string,
-        guardianFirstName: PropTypes.string.isRequired,
-        guardianLastName: PropTypes.string.isRequired,
-        id: PropTypes.string.isRequired,
-      }).isRequired,
-    removeStudent: PropTypes.func,
-  };
+  match: PropTypes.shape({
+    params: PropTypes.object.isRequired
+  }).isRequired,
+  removeStudent: PropTypes.func
+};
   
   Student.defaultProps = {
     removeStudent: () => {},

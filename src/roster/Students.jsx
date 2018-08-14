@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 
 class Students extends Component {
-    
-    setRedirect = (student) => this.props.viewStudent(student);
+    stop = () => {}
       
   render() {
     return (
         <ul className="mdc-list">
         {this.props.students.map( student => 
             <div key={student.id}>
-                <a onClick={() => this.setRedirect(student)} role="button" tabIndex="0">
+                <Link to={`/student/${student.id}`}>
                     <li className="mdc-layout-grid__inner mdc-list-item">
                     {student.lastName}, {student.firstName}
                         <div className="mdc-list-item__meta">
                             <i className="material-icons">lens</i>
                         </div>
                     </li>
-                </a>
+                </Link>
                 <li role="separator" className="mdc-list-divider"/> 
             </div>
         )}     
@@ -34,11 +34,7 @@ Students.propTypes = {
           id: PropTypes.string.isRequired,
         }),
       ).isRequired,
-      viewStudent: PropTypes.func,
   };
   
-  Students.defaultProps = {
-    viewStudent: () => {},
-  };
 
 export default Students;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { API } from 'aws-amplify';
 import Landing from './Landing';
@@ -19,11 +20,11 @@ class App extends Component {
       })
     }
   
-    // addStudent = student => {
-    //   API.post('studentsCRUD', '/students', {body: student}).then( () => {
-    //     this.setState({ students: [student, ...this.state.students] });
-    //   })
-    // };
+    addStudent = student => {
+      API.post('studentsCRUD', '/students', {body: student}).then( () => {
+        this.setState({ students: [student, ...this.state.students] });
+      })
+    };
   
     removeStudent = studentId => {
       API.del('studentsCRUD', `/students/object/${studentId}`).then( () => {
@@ -45,20 +46,14 @@ class App extends Component {
         {this.renderRedirect()}
         <Switch>
           <Route exact path="/" component={Landing} />
-          <Route 
+          <Route
+            exact
             path="/roster" 
             component={() => <Roster students={this.state.students} viewStudent={this.viewStudent}/>}/>
           <Route
-            path="/roster/:id"
-            // component={(props: { match: Match }) => {
-            //   const selectedStudent = this.state.student.find(student => props.match.params.id === student.id);
-            // return (<Student removeStudent={this.removeStudent} student={selectedStudent} {...props}/>)
-            // }}
-            component={() => {
-              const selectedStudent = this.state.students.find(student => student.id === this.state.selectedStudentId);
-              return <Student removeStudent={this.removeStudent} student={selectedStudent} />;
-            }}
-          />
+            exact
+            path="/student/:id"
+            component={(props) => <Student removeStudent={this.removeStudent} {...props}/>}/>
           <Route 
             path="/new-student" 
             component={() => <NewStudent addStudent={this.addStudent} />} />
@@ -67,5 +62,13 @@ class App extends Component {
       )
     }
   }
+
+  App.propTypes = {
+    match: PropTypes.string
+    };
+
+    App.defaultProps = {
+      match: '',
+  };
 
 export default App;

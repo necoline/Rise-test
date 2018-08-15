@@ -9,7 +9,7 @@ const TextField = (props) => (
             className="mdc-text-field__input"
             placeholder={props.label}
             onChange={props.handleChange}
-            value={props.value} />
+            value={props.value || ''} />
         <label 
             htmlFor="tf-outlined" 
             className="mdc-floating-label--float-above mdc-floating-label above-outline">

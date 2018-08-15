@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { API } from 'aws-amplify';
 import { Redirect } from "react-router-dom";
 import PropTypes from 'prop-types';
-import TextField from '../common/TextField';
-import Header from '../common/Header';
+import TextField from './common/TextField';
+import Header from './common/Header';
 
 class Student extends Component {
   state = {

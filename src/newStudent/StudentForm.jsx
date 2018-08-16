@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import TextField from '../common/TextField';
+import InputField from '../common/InputField';
 import DropDownField from '../common/DropDownField';
 
 class Form extends Component {
   state = {
+    id: '',
     firstName: '',
     middleName: '',
     lastName: '',
@@ -12,13 +13,42 @@ class Form extends Component {
     guardianFirstName: '',
     guardianLastName: '',
     // dob: 0,
-    // gender: '',
-    // grade: '',
-    id: '',
+    gender: '',
+    grade: '',
+    race: '',
+    ethnicity: '',
+    nationality: '',
+    countryOfRefuge: '',
+    vulnerabilityStatus: '',
+    teacherName: '',
+    cpaName: '',    
   };
 
   setSubmission = () => {
     this.props.submitEntry(this.state)
+    this.clearInputs()
+  }
+
+  clearInputs = () => {
+    this.setState({
+      id: '',
+      firstName: '',
+      middleName: '',
+      lastName: '',
+      preferredName: '',
+      guardianFirstName: '',
+      guardianLastName: '',
+      // dob: 0,
+      gender: '',
+      grade: '',
+      race: '',
+      ethnicity: '',
+      nationality: '',
+      countryOfRefuge: '',
+      vulnerabilityStatus: '',
+      teacherName: '',
+      cpaName: '',
+    })
   }
 
   handleFirstNameChange = event => {
@@ -45,18 +75,13 @@ class Form extends Component {
     this.setState({guardianLastName: event.target.value})
   };
 
+  handleEthnicityChange = event => {
+    this.setState({ethnicity: event.target.value})
+  };
   // handleFirstNameChange = event => {
   //   this.setState({dob: event.target.value})
   // };
   // TODO: select m/d/yr drop downs that are changed into 
-
-  // handleFirstNameChange = event => {
-  //   this.setState({gender: event.target.value})
-  // };
-
-  // handleFirstNameChange = event => {
-  //   this.setState({grade: event.target.value})
-  // };
 
   render() {
     return (
@@ -64,36 +89,36 @@ class Form extends Component {
         <div className="mdc-layout-grid container">
           <div className="mdc-layout-grid__inner">
             <div className="mdc-layout-grid__cell">
-              <TextField 
+              <InputField 
                 handleChange={this.handleFirstNameChange} 
                 value={this.state.firstName} 
                 label="First Name"
                 rowRatio="half"/>
-              <TextField 
+              <InputField 
                 handleChange={this.handleMiddleNameChange} 
                 value={this.state.middleName} 
                 label="Middle Name"
                 rowRatio="half"/>
               </div>
               <div className="mdc-layout-grid__cell">
-              <TextField 
+              <InputField 
                 handleChange={this.handleLastNameChange} 
                 value={this.state.lastName} 
                 label="Last Name"
                 rowRatio="half"/>
-              <TextField 
+              <InputField 
                 handleChange={this.handlePreferredNameChange} 
                 value={this.state.preferredName} 
                 label="Preferred Name"
                 rowRatio="half"/>
             </div>
             <div className="mdc-layout-grid__cell">
-              <TextField 
+              <InputField 
                 handleChange={this.handleGuardianFirstNameChange} 
                 value={this.state.guardianFirstName} 
                 label="Guardian's First Name"
                 rowRatio="half"/>
-              <TextField 
+              <InputField 
                 handleChange={this.handleGuardianLastNameChange} 
                 value={this.state.guardianLastName} 
                 label="Guardian's Last Name"
@@ -115,7 +140,19 @@ class Form extends Component {
                 options={["PreK", "Kindergarten", "1", "2", "3", "4", "5", "6" ]}
                 label="Grade"
                 rowRatio="half"/>
-            </div>
+              </div>
+              <div className="mdc-layout-grid__cell">
+              <DropDownField 
+                selected={this.state.race}
+                options={["Black", "White/Caucasion", "Hispanic/Latino", "Asian", "Polynesian"]}
+                label="Race"
+                rowRatio="half"/>
+              <InputField 
+                handleChange={this.handleEthnicityChange} 
+                value={this.state.ethnicity} 
+                label="Ethnicity"
+                rowRatio="half"/>
+              </div>
             <div className="mdc-layout-grid__cell">
               <button className="submit-button mdc-button mdc-button--raised" onClick={this.setSubmission}>
                 Add Student

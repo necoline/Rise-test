@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 const DropDownField = (props) => (
 <div className={`mdc-select mdc-select--outlined input-field-gutter input-field-${props.rowRatio}-width`}>
     <select className="mdc-select__native-control">
-      <option value={props.selected || ''} disabled defaultValue/>
+      <option value={props.selected || ''} enabled defaultValue/>
       {props.options.map( option =>
-              <option value={option}>
+              <option value={option} key={option}>
               {option}
               </option>
       )}
@@ -27,7 +27,7 @@ const DropDownField = (props) => (
 
 DropDownField.propTypes = {
     selected: PropTypes.string,
-    options: PropTypes.arrayOf(PropTypes.number).isRequired,
+    options: PropTypes.arrayOf(PropTypes.string).isRequired,
     label: PropTypes.string.isRequired,
     rowRatio: PropTypes.string.isRequired,
 };

@@ -7,7 +7,16 @@ export type Student = {
     preferredName: string,
     guardianFirstName: string,
     guardianLastName: string,
-    id: string
+    id: string,
+    gender: string,
+    grade: string,
+    race: string,
+    ethnicity: string,
+    nationality: string,
+    countryOfRefuge: string,
+    vulnerabilityStatus: string,
+    teacherName: string,
+    cpaName: string, 
   };
   
   declare var module: {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TextField from '../common/TextField';
+import DropDownField from '../common/DropDownField';
 
 class Form extends Component {
   state = {
@@ -98,23 +99,23 @@ class Form extends Component {
                 label="Guardian's Last Name"
                 rowRatio="half"/>
             </div>
-            {/* <div className="mdc-layout-grid__cell">
-              <TextField 
+            <div className="mdc-layout-grid__cell">
+              {/* <DropDownField 
                 handleChange={this.handleDobChange} 
                 value={this.state.dob} 
                 label="Date of Birth"
-                rowRatio="third"/>
+                rowRatio="third"/>  */}
               <DropDownField 
-                handleChange={this.handleGenderChange} 
-                value={this.state.gender} 
+                selected={this.state.gender} 
+                options={["female", "male", "other"]}
                 label="Gender"
-                rowRatio="third"/>
+                rowRatio="half"/>
               <DropDownField 
-                handleChange={this.handleGradeChange} 
-                value={this.state.grade} 
+                selected={this.state.grade}
+                options={["PreK", "Kindergarten", "1", "2", "3", "4", "5", "6" ]}
                 label="Grade"
-                rowRatio="third"/>
-            </div> */}
+                rowRatio="half"/>
+            </div>
             <div className="mdc-layout-grid__cell">
               <button className="submit-button mdc-button mdc-button--raised" onClick={this.setSubmission}>
                 Add Student

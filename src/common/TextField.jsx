@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const TextField = (props) => (
-    <div className={`mdc-text-field mdc-text-field--outlined mdc-text-field--upgraded text-field-gutter text-field-${props.rowRatio}-width`}>
+    <div className={`mdc-text-field mdc-text-field--outlined mdc-text-field--upgraded input-field-gutter input-field-${props.rowRatio}-width`}>
         <input 
             type="text" 
             id="tf-outlined" 

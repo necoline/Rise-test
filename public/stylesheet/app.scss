@@ -12,6 +12,7 @@ $mdc-typography-font-family: "Arial";
 @import "@material/list/mdc-list";
 @import "@material/top-app-bar/mdc-top-app-bar";
 @import "@material/fab/mdc-fab";
+@import "@material/select/mdc-select";
 
 body {
   margin: 0;
@@ -61,18 +62,18 @@ color: $mdc-theme-on-primary;
   margin-bottom: 10px;
 }
 
-.text-field-gutter {
+.input-field-gutter {
   margin: 0 1%;
 }
 
-.text-field-half-width {
+.input-field-half-width {
   width: 40%;
 }
 
-.text-field-third-width {
+.input-field-third-width {
   width: 25%;
 }
 
-.text-field-full-width {
+.input-field-full-width {
   width: 80%;
 }

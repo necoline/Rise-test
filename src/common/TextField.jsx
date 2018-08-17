@@ -24,9 +24,13 @@ const TextField = (props) => (
 );
 
 TextField.propTypes = {
-    value: PropTypes.string.isRequired,
+    value: PropTypes.string,
     label: PropTypes.string.isRequired,
     rowRatio: PropTypes.string.isRequired,
 };
+
+TextField.defaultProps = {
+    value: '',
+  };
 
 export default TextField;

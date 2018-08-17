@@ -5,7 +5,7 @@ import { API } from 'aws-amplify';
 import Landing from './Landing';
 import Roster from './roster/Roster';
 import NewStudent from './newStudent/NewStudent';
-import Student from './Student';
+import Student from './Student/Student';
 
 class App extends Component {
   state = {

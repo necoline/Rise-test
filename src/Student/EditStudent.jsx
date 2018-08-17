@@ -1,55 +1,28 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import InputField from '../common/InputField';
-import DropDownField from '../common/DropDownField';
+// import InputField from '../common/InputField';
+// import DropDownField from '../common/DropDownField';
 
 class EditStudent extends Component {
   state = {
     student: {}    
   };
 
-  setSubmission = () => {
-    this.props.updateStudent(this.state.student)
-  }
-
-  handleFirstNameChange = event => {
-    this.setState({student: { firstName: event.target.value }})
-  };
-
-  handleMiddleNameChange = event => {
-    this.setState({ student: { middleName: event.target.value }})
-  };
-
-  handleLastNameChange = event => {
-    this.setState({student: {lastName: event.target.value, id: Date.now().toString()}})
-  };
-
-  handlePreferredNameChange = event => {
-    this.setState({student: {preferredName: event.target.value }})
-  };
-
-  handleGuardianFirstNameChange = event => {
-    this.setState({student: {guardianFirstName: event.target.value }})
-  };
-
-  handleGuardianLastNameChange = event => {
-    this.setState({ student: {guardianLastName: event.target.value }})
-  };
-
-  handleEthnicityChange = event => {
-    this.setState({student: {ethnicity: event.target.value }})
-  };
-
-  // handleFirstNameChange = event => {
-  //   this.setState({dob: event.target.value})
-  // };
-  // TODO: select m/d/yr drop downs that are changed into 
+  // setSubmission = () => {
+  //   this.props.updateStudent(this.state.student)
+  // }
 
   render() {
     const { student } = this.props
     return (
       <div>
-        <div className="mdc-layout-grid container">
+        <h1>
+         Hello editor
+        </h1>
+        <h1>
+         {student.firstName}
+        </h1>
+        {/* <div className="mdc-layout-grid container">
           <div className="mdc-layout-grid__inner">
             <div className="mdc-layout-grid__cell">
               <InputField 
@@ -122,36 +95,54 @@ class EditStudent extends Component {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }
 }
 
 EditStudent.propTypes = {
-  updateStudent: PropTypes.func,
+  // updateStudent: PropTypes.func,
   student: PropTypes.shape({
-    firstName: PropTypes.string.isRequired,
-    middleName: PropTypes.string.isRequired,
-    lastName: PropTypes.string.isRequired,
-    preferredName: PropTypes.string.isRequired,
-    guardianFirstName: PropTypes.string.isRequired,
-    guardianLastName: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-    gender: PropTypes.string.isRequired,
-    grade: PropTypes.string.isRequired,
-    race: PropTypes.string.isRequired,
-    ethnicity: PropTypes.string.isRequired,
-    nationality: PropTypes.string.isRequired,
-    countryOfRefuge: PropTypes.string.isRequired,
-    vulnerabilityStatus: PropTypes.string.isRequired,
-    teacherName: PropTypes.string.isRequired,
-    cpaName: PropTypes.string.isRequired, 
+    firstName: PropTypes.string,
+    middleName: PropTypes.string,
+    lastName: PropTypes.string,
+    preferredName: PropTypes.string,
+    guardianFirstName: PropTypes.string,
+    guardianLastName: PropTypes.string,
+    id: PropTypes.string,
+    gender: PropTypes.string,
+    grade: PropTypes.string,
+    race: PropTypes.string,
+    ethnicity: PropTypes.string,
+    nationality: PropTypes.string,
+    countryOfRefuge: PropTypes.string,
+    vulnerabilityStatus: PropTypes.string,
+    teacherName: PropTypes.string,
+    cpaName: PropTypes.string, 
   }).isRequired
 };
 
 EditStudent.defaultProps = {
-  updateStudent: () => {},
+  // updateStudent: () => {},
+  student: PropTypes.shape({
+    firstName: '',
+    middleName: '',
+    lastName: '',
+    preferredName: '',
+    guardianFirstName: '',
+    guardianLastName: '',
+    id: '',
+    gender: '',
+    grade: '',
+    race: '',
+    ethnicity: '',
+    nationality: '',
+    countryOfRefuge: '',
+    vulnerabilityStatus: '',
+    teacherName: '',
+    cpaName: '', 
+  }).isRequired
 };
 
 export default EditStudent;

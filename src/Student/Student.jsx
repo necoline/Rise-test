@@ -47,8 +47,8 @@ class Student extends Component {
         {this.renderRedirect()}
         <Header title={"Student Profile"}/>
         {isEditing ?
-        <StudentDetails student={student} deleteStudent={this.deleteStudent} editStudent={this.editStudent}/> :
-        <EditStudent student={student} updateStudent={this.updateStudent} submitText="Save Changes"/>
+        <EditStudent student={student} updateStudent={this.updateStudent} submitText="Save Changes"/> :
+        <StudentDetails student={student} deleteStudent={this.deleteStudent} editStudent={this.editStudent}/>
         }
       </div>
     )

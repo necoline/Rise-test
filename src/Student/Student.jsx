@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { API } from 'aws-amplify';
+import { withAuthenticator } from 'aws-amplify-react';
 import { Redirect } from "react-router-dom";
 import PropTypes from 'prop-types';
 import Header from '../common/Header';
@@ -66,4 +67,4 @@ Student.propTypes = {
     removeStudent: () => {},
   };
 
-export default Student;
+export default withAuthenticator(Student);

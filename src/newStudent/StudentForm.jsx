@@ -26,29 +26,7 @@ class Form extends Component {
 
   setSubmission = () => {
     this.props.submitEntry(this.state)
-    this.clearInputs()
-  }
-
-  clearInputs = () => {
-    this.setState({
-      id: '',
-      firstName: '',
-      middleName: '',
-      lastName: '',
-      preferredName: '',
-      guardianFirstName: '',
-      guardianLastName: '',
-      // dob: 0,
-      gender: '',
-      grade: '',
-      race: '',
-      ethnicity: '',
-      nationality: '',
-      countryOfRefuge: '',
-      vulnerabilityStatus: '',
-      teacherName: '',
-      cpaName: '',
-    })
+    console.log('student', this.state)
   }
 
   handleFirstNameChange = event => {

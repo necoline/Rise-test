@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import InputField from '../common/InputField';
-// import DropDownField from '../common/DropDownField';
+import InputField from '../common/InputField';
+import DropDownField from '../common/DropDownField';
 
 class EditStudent extends Component {
   state = {
@@ -16,13 +16,7 @@ class EditStudent extends Component {
     const { student } = this.props
     return (
       <div>
-        <h1>
-         Hello editor
-        </h1>
-        <h1>
-         {student.firstName}
-        </h1>
-        {/* <div className="mdc-layout-grid container">
+        <div className="mdc-layout-grid container">
           <div className="mdc-layout-grid__inner">
             <div className="mdc-layout-grid__cell">
               <InputField 
@@ -61,11 +55,11 @@ class EditStudent extends Component {
                 rowRatio="half"/>
             </div>
             <div className="mdc-layout-grid__cell">
-              <DropDownField 
+              {/* <DropDownField 
                 handleChange={this.handleDobChange} 
                 value={student.dob} 
                 label="Date of Birth"
-                rowRatio="third"/> 
+                rowRatio="third"/>  */}
               <DropDownField 
                 selected={student.gender} 
                 options={["female", "male", "other"]}
@@ -95,7 +89,7 @@ class EditStudent extends Component {
               </button>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     );
   }

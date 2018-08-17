@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const DropDownField = (props) => (
 <div className={`mdc-select mdc-select--outlined input-field-gutter input-field-${props.rowRatio}-width`}>
     <select className="mdc-select__native-control">
-      <option value={props.selected || ''} enabled defaultValue/>
+      <option value={props.selected || ''} defaultValue/>
       {props.options.map( option =>
               <option value={option} key={option}>
               {option}

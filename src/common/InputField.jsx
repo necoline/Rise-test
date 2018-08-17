@@ -26,13 +26,16 @@ const InputField = (props) => (
 
 InputField.propTypes = {
     handleChange: PropTypes.func,
-    value: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    rowRatio: PropTypes.string.isRequired,
+    value: PropTypes.string,
+    label: PropTypes.string,
+    rowRatio: PropTypes.string,
 };
 
 InputField.defaultProps = {
   handleChange: () => {},
+  value: '',
+  label: '',
+  rowRatio: 'half',
 };
 
 export default InputField;

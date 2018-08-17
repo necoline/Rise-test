@@ -4,7 +4,8 @@
     "dev": "webpack-dev-server",
     "format": "prettier --write --single-quote --print-width=120 --parser=flow --tab-width=2 \"js/**/*.{js,jsx}\"",
     "lint": "eslint **/*.{js,jsx} --quiet",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "flow": "flow"
   },
   "dependencies": {
     "@material/button": "^0.38.0",

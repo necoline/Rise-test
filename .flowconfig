@@ -6,9 +6,13 @@
 <PROJECT_ROOT>/node_modules/config-chain/*
 <PROJECT_ROOT>/node_modules/awsmobile-cli/*
 <PROJECT_ROOT>/node_modules/autoprefixer/*
+.*/node_modules/.*
+.*/src/index\.jsx
+
 
 [include]
 
 [libs]
 
 [options]
+all=true

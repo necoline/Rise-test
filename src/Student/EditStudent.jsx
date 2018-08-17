@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import InputField from '../common/InputField';
@@ -12,15 +13,28 @@ class EditStudent extends Component {
   //   this.props.updateStudent(this.state.student)
   // }
 
+  // setStudent = (student) => {
+  //   this.this.setState({student})
+  // }
+
+  handleFirstNameChange = event => {
+    // const oldStudent = this.props.student
+    console.log('props', this.props.student)
+    console.log('name', event.target.value)
+    // this.setState({student: {firstName: event.target.value}})
+  };
+
   render() {
     const { student } = this.props
     return (
       <div>
+        {/* {this.setStudent(student)} */}
         <div className="mdc-layout-grid container">
           <div className="mdc-layout-grid__inner">
             <div className="mdc-layout-grid__cell">
               <InputField 
                 handleChange={this.handleFirstNameChange} 
+                // value={student.firstName || this.state.student.firstName} 
                 value={student.firstName} 
                 label="First Name"
                 rowRatio="half"/>

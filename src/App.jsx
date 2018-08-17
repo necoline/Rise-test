@@ -7,7 +7,7 @@ import Roster from './roster/Roster';
 import NewStudent from './newStudent/NewStudent';
 import Student from './Student/Student';
 
-class App extends Component {
+class App extends Component<{}> {
   state = {
       students: []
     }

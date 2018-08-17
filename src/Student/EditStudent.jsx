@@ -14,7 +14,7 @@ class EditStudent extends Component {
   // }
 
   // setStudent = (student) => {
-  //   this.this.setState({student})
+  //   this.setState({student})
   // }
 
   handleFirstNameChange = event => {
@@ -25,7 +25,7 @@ class EditStudent extends Component {
   };
 
   render() {
-    const { student } = this.props
+    const { student } = this.state
     return (
       <div>
         {/* {this.setStudent(student)} */}

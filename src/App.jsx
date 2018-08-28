@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-// import { withAuthenticator } from 'aws-amplify-react';
 import { Route, Switch} from 'react-router-dom';
-import { API } from 'aws-amplify';
 import Landing from './Landing';
 import Roster from './roster/Roster';
 import NewStudent from './newStudent/NewStudent';
@@ -13,23 +11,21 @@ class App extends Component {
     }
     
     componentDidMount() {
-      API.get('studentsCRUD', '/student').then( students => {
-        this.setState({ students });
-      })
+      // get all students
     }
   
     addStudent = (student) => {
-      API.post('studentsCRUD', '/student', {body: student}).then( () => {
+      // post new students
         this.setState({ students: [student, ...this.state.students] });
-      })
+      // })
     };
   
     removeStudent = studentId => {
-      API.del('studentCRUD', `/student/object/${studentId}`).then( () => {
+      // delete students given an id
         this.setState({
           students: this.state.students.filter(student => student.id !== studentId),
         });
-      });
+      // });
     };
 
   

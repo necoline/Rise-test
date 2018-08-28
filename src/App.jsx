@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withAuthenticator } from 'aws-amplify-react';
+// import { withAuthenticator } from 'aws-amplify-react';
 import { Route, Switch} from 'react-router-dom';
 import { API } from 'aws-amplify';
 import Landing from './Landing';
@@ -13,19 +13,19 @@ class App extends Component {
     }
     
     componentDidMount() {
-      API.get('studentsCRUD', '/students').then( students => {
+      API.get('studentsCRUD', '/student').then( students => {
         this.setState({ students });
       })
     }
   
     addStudent = (student) => {
-      API.post('studentsCRUD', '/students', {body: student}).then( () => {
+      API.post('studentsCRUD', '/student', {body: student}).then( () => {
         this.setState({ students: [student, ...this.state.students] });
       })
     };
   
     removeStudent = studentId => {
-      API.del('studentsCRUD', `/students/object/${studentId}`).then( () => {
+      API.del('studentCRUD', `/student/object/${studentId}`).then( () => {
         this.setState({
           students: this.state.students.filter(student => student.id !== studentId),
         });
@@ -55,4 +55,4 @@ class App extends Component {
     }
   }
 
-export default withAuthenticator(App);
+export default App;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { API } from 'aws-amplify';
+// import { API } from 'aws-amplify';
 import { Redirect } from "react-router-dom";
 import PropTypes from 'prop-types';
 import TextField from '../common/TextField';
@@ -12,13 +12,13 @@ class Student extends Component {
    }
  
 
-  componentDidMount() {
-    API.get('studentsCRUD', `/students/object/${this.props.match.params.id}`).then( student => {
-      if(student.id){
-        this.setState({ student })
-      } 
-    })
-  }
+  // componentDidMount() {
+  //   API.get('testerCRUD', `/tester/object/${this.props.match.params.id}`).then( student => {
+  //     if(student.id){
+  //       this.setState({ student })
+  //     } 
+  //   })
+  // }
 
   setRedirect = () => {
     this.setState({
@@ -88,9 +88,9 @@ class Student extends Component {
 }
 
 Student.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.object.isRequired
-  }).isRequired,
+  // match: PropTypes.shape({
+  //   params: PropTypes.object.isRequired
+  // }).isRequired,
   removeStudent: PropTypes.func
 };
   

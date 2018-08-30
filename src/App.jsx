@@ -4,18 +4,26 @@ import Landing from './Landing';
 import Roster from './roster/Roster';
 import NewStudent from './newStudent/NewStudent';
 import Student from './roster/Student';
+import firebase from './firebase';
 
 class App extends Component {
   state = {
       students: []
     }
-    
+   
     componentDidMount() {
-      // get all students
+      const studentsRef = firebase.database().ref('student').orderByKey().limitToLast(100);
+      studentsRef.on('child_added', snapshot => {
+        /* Update React state when message is added at Firebase Database */
+        const student = { data: snapshot.val(), id: snapshot.key };
+        this.setState({ students: [student].concat(this.state.students) });
+      })
     }
   
     addStudent = (student) => {
       // post new students
+      const studentsRef = firebase.database().ref('student');
+      studentsRef.push(student);
         this.setState({ students: [student, ...this.state.students] });
       // })
     };
@@ -30,6 +38,7 @@ class App extends Component {
 
   
     render() {
+      console.log('state', this.state.students)
       return (
         <div className="app">
         <Switch>

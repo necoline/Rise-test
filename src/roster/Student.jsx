@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import PropTypes from 'prop-types';
 import TextField from '../common/TextField';
 import Header from '../common/Header';
+import firebase from '../firebase';
 
 class Student extends Component {
   state = {
@@ -19,6 +20,15 @@ class Student extends Component {
   //   })
   // }
 
+  componentDidMount() {
+    const studentRef = firebase.database().ref(`/student/${this.props.match.params.id}`)
+    studentRef.on('value', data => {
+      /* Update React state when message is added at Firebase Database */
+      // const student = { data: snapshot.val(), id: snapshot.key };
+      this.setState({ student: data.val() })
+    })
+  }
+
   setRedirect = () => {
     this.setState({
       redirect: true
@@ -33,6 +43,7 @@ class Student extends Component {
   renderRedirect = () => this.state.redirect || !this.state.student ?  <Redirect to='/roster' /> : null;
 
   render() {
+    console.log('one student', this.state.student)
     const { student } = this.state
 
     return student && (
@@ -87,9 +98,9 @@ class Student extends Component {
 }
 
 Student.propTypes = {
-  // match: PropTypes.shape({
-  //   params: PropTypes.object.isRequired
-  // }).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.object.isRequired
+  }).isRequired,
   removeStudent: PropTypes.func
 };
   

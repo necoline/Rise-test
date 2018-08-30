@@ -26,12 +26,14 @@ const Roster = (props) => (
 
 Roster.propTypes = {
   students: PropTypes.arrayOf(
-      PropTypes.shape({
-        firstName: PropTypes.string.isRequired,
-        lastName: PropTypes.string.isRequired,
-        id: PropTypes.string.isRequired,
-      }),
-    ).isRequired
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      data: PropTypes.shape({
+        firstName: PropTypes.string,
+        lastName: PropTypes.string
+      }).isRequired
+    }),
+  ).isRequired,
   };
 
 

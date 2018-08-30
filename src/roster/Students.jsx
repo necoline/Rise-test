@@ -12,7 +12,7 @@ class Students extends Component {
             <div key={student.id}>
                 <Link to={`/student/${student.id}`}>
                     <li className="mdc-layout-grid__inner mdc-list-item">
-                    {student.lastName}, {student.firstName}
+                    {student.data.lastName}, {student.data.firstName}
                         <div className="mdc-list-item__meta">
                             <i className="material-icons">lens</i>
                         </div>
@@ -29,9 +29,11 @@ class Students extends Component {
 Students.propTypes = {
     students: PropTypes.arrayOf(
         PropTypes.shape({
-          firstName: PropTypes.string.isRequired,
-          lastName: PropTypes.string.isRequired,
           id: PropTypes.string.isRequired,
+          data: PropTypes.shape({
+            firstName: PropTypes.string,
+            lastName: PropTypes.string
+          }).isRequired
         }),
       ).isRequired,
   };

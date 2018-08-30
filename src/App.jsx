@@ -30,15 +30,17 @@ class App extends Component {
   
     removeStudent = studentId => {
       // delete students given an id
-        this.setState({
-          students: this.state.students.filter(student => student.id !== studentId),
-        });
+        // this.setState({
+        //   students: this.state.students.filter(student => student.id !== studentId),
+        // });
       // });
+
+      const studentRef = firebase.database().ref(`/student/${studentId}`);
+      studentRef.remove();
     };
 
   
     render() {
-      console.log('state', this.state.students)
       return (
         <div className="app">
         <Switch>

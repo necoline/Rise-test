@@ -27,10 +27,9 @@ class App extends Component {
     };
   
     removeStudent = studentId => {
-      console.log('id', studentId)
-        this.setState({
-          students: this.state.students.filter(student => student.id !== studentId),
-        });
+        // this.setState({
+        //   students: this.state.students.filter(student => student.id !== studentId),
+        // });
 
       const studentRef = firebase.database().ref(`/student/${studentId}`);
       studentRef.remove();

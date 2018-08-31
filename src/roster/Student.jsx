@@ -30,7 +30,7 @@ class Student extends Component {
     this.setRedirect();
   } 
 
-  renderRedirect = () => this.state.redirect || !this.state.student ?  <Redirect to='/roster' /> : null;
+  renderRedirect = () => this.state.redirect || !this.state.id ?  <Redirect to='/roster' /> : null;
 
   render() {
     const { student } = this.state

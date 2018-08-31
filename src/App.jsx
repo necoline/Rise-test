@@ -21,22 +21,19 @@ class App extends Component {
     }
   
     addStudent = (student) => {
-      // post new students
       const studentsRef = firebase.database().ref('student');
       studentsRef.push(student);
         this.setState({ students: [student, ...this.state.students] });
-      // })
     };
   
     removeStudent = studentId => {
-      // delete students given an id
-        // this.setState({
-        //   students: this.state.students.filter(student => student.id !== studentId),
-        // });
-      // });
+      console.log('id', studentId)
+        this.setState({
+          students: this.state.students.filter(student => student.id !== studentId),
+        });
 
-      const studentRef = firebase.database().ref(`/student/${studentId}`);
-      studentRef.remove();
+      // const studentRef = firebase.database().ref(`/student/${studentId}`);
+      // studentRef.remove();
     };
 
   

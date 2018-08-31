@@ -10,6 +10,7 @@ class NewStudent extends Component {
   };
 
   setRedirect = () => {
+    console.log('setting redirect')
     this.setState({
       redirect: true
     })
@@ -20,7 +21,11 @@ class NewStudent extends Component {
     this.setRedirect();
   }
 
-  renderRedirect = () => this.state.redirect ?  <Redirect to='/roster' /> : null;
+  renderRedirect = () => {
+    console.log('hitting', this.state.redirect)
+   return  this.state.redirect ?  <Redirect to='/roster' /> : null
+  }
+  
 
   render() {
     return (

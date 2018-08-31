@@ -10,40 +10,29 @@ class Student extends Component {
     student: null,
     redirect: false
    }
- 
-
-  // componentDidMount() {
-  //   API.get('testerCRUD', `/tester/object/${this.props.match.params.id}`).then( student => {
-  //     if(student.id){
-  //       this.setState({ student })
-  //     } 
-  //   })
-  // }
 
   componentDidMount() {
     const studentRef = firebase.database().ref(`/student/${this.props.match.params.id}`)
     studentRef.on('value', data => {
-      /* Update React state when message is added at Firebase Database */
-      // const student = { data: snapshot.val(), id: snapshot.key };
-      this.setState({ student: data.val() })
+      this.setState({
+        student: data.val(),
+        id: this.props.match.params.id
+       })
     })
   }
 
   setRedirect = () => {
-    this.setState({
-      redirect: true
-    })
+    this.setState({ redirect: true })
   }
 
-  deleteStudent = (id) => {
-    this.props.removeStudent(id)
+  deleteStudent = () => {
+    this.props.removeStudent(this.state.id)
     this.setRedirect();
   } 
 
   renderRedirect = () => this.state.redirect || !this.state.student ?  <Redirect to='/roster' /> : null;
 
   render() {
-    console.log('one student', this.state.student)
     const { student } = this.state
 
     return student && (
@@ -56,7 +45,7 @@ class Student extends Component {
               <button className="mdc-fab fab-toolbar" aria-label="add">
                 <span className="mdc-fab__icon material-icons">edit</span>
               </button>
-              <button className="mdc-fab fab-toolbar" aria-label="add" onClick={() => this.deleteStudent(student.id)}>
+              <button className="mdc-fab fab-toolbar" aria-label="add" onClick={() => this.deleteStudent()}>
                 <span className="mdc-fab__icon material-icons">delete</span>
               </button>
             </div>

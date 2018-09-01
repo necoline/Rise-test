@@ -4,28 +4,28 @@ import PropTypes from 'prop-types';
 import Header from '../common/Header';
 import StudentForm from './StudentForm';
 
+
 class NewStudent extends Component {
+  
   state = {
-    redirect: false
+    student: {}
   };
 
-  setRedirect = () => {
-    console.log('setting redirect')
-    this.setState({
-      redirect: true
-    })
-  }
-
   submitEntry = (student) => {
-    this.props.addStudent(student);
-    this.setRedirect();
+    this.props.addStudent(student)
+    this.props.history.push('/roster')
   }
 
-  renderRedirect = () => {
-    console.log('hitting', this.state.redirect)
-   return  this.state.redirect ?  <Redirect to='/roster' /> : null
-  }
-  
+  renderRedirect = () => this.state.redirect ? <Redirect to='/roster' /> : null
+
+  // renderRedirect = () => {  
+  //   if (this.state.redirect) {
+  //     this.props.addStudent(this.state.student)
+  //     return <Redirect to='/roster' />
+  //   } 
+  //     return false;
+    
+  // }  
 
   render() {
     return (
@@ -40,10 +40,12 @@ class NewStudent extends Component {
 
 NewStudent.propTypes = {
   addStudent: PropTypes.func,
+  history: PropTypes.func
 };
 
 NewStudent.defaultProps = {
   addStudent: () => {},
+  history: PropTypes.func
 };
 
 export default NewStudent;

@@ -23,8 +23,8 @@ class App extends Component {
     addStudent = (student) => {
       const studentsRef = firebase.database().ref('student');
       studentsRef.push(student);
-        this.setState({ students: [student, ...this.state.students] });
     };
+
   
     removeStudent = studentId => {
         // this.setState({
@@ -51,7 +51,7 @@ class App extends Component {
             component={(props) => <Student removeStudent={this.removeStudent} {...props}/>}/>
           <Route 
             path="/new-student" 
-            component={() => <NewStudent addStudent={this.addStudent}/>} />
+            component={props => <NewStudent {...props} addStudent={this.addStudent}/>} />
         </Switch>
         </div>
       )

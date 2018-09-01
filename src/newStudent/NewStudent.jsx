@@ -32,7 +32,7 @@ class NewStudent extends Component {
       <div>
         {this.renderRedirect()}
         <Header title={"New Student"}/>
-        <StudentForm submitEntry={this.submitEntry}/>
+        <StudentForm />
       </div>
     );
   }

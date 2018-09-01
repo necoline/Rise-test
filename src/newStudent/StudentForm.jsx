@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Subscribe } from 'unstated';
+
 import TextField from '../common/TextField';
+import StudentContainer from '../containers/StudentContainer'
+
 
 class Form extends Component {
   state = {
@@ -13,11 +17,11 @@ class Form extends Component {
     // dob: 0,
     // gender: '',
     // grade: '',
-    id: '',
   };
 
-  setSubmission = () => {
-    this.props.submitEntry(this.state)
+  setSubmission = addStudent => (event) => {
+    event.preventDefault()
+    addStudent(this.state)
   }
 
   handleFirstNameChange = event => {
@@ -29,7 +33,7 @@ class Form extends Component {
   };
 
   handleLastNameChange = event => {
-    this.setState({lastName: event.target.value, id: Date.now().toString()})
+    this.setState({lastName: event.target.value})
   };
 
   handlePreferredNameChange = event => {
@@ -115,10 +119,13 @@ class Form extends Component {
                 label="Grade"
                 rowRatio="third"/>
             </div> */}
+
             <div className="mdc-layout-grid__cell">
-              <button className="submit-button mdc-button mdc-button--raised" onClick={this.setSubmission}>
+            <Subscribe to={[StudentContainer]}>{({addStudent}) =>
+              <button className="submit-button mdc-button mdc-button--raised" onClick={this.setSubmission(addStudent)}>
                 Add Student
-              </button>
+              </button>}
+            </Subscribe>
             </div>
           </div>
         </div>

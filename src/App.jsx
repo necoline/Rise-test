@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import { Route, Switch} from 'react-router-dom';
+import { Provider } from 'unstated';
+
 import Landing from './Landing';
 import Roster from './roster/Roster';
 import NewStudent from './newStudent/NewStudent';
 import Student from './roster/Student';
-import firebase from './firebase';
+
+import StudentContainer from './containers/StudentContainer'
+
+const studentContainer = new StudentContainer
+
 
 class App extends Component {
   state = {
@@ -12,47 +18,28 @@ class App extends Component {
     }
    
     componentDidMount() {
-      const studentsRef = firebase.database().ref('student').orderByKey().limitToLast(100);
-      studentsRef.on('child_added', snapshot => {
-        /* Update React state when message is added at Firebase Database */
-        const student = { data: snapshot.val(), id: snapshot.key };
-        this.setState({ students: [student].concat(this.state.students) });
-      })
+      studentContainer.fetchAllStudents()
     }
-  
-    addStudent = (student) => {
-      const studentsRef = firebase.database().ref('student');
-      studentsRef.push(student);
-    };
-
-  
-    removeStudent = studentId => {
-        // this.setState({
-        //   students: this.state.students.filter(student => student.id !== studentId),
-        // });
-
-      const studentRef = firebase.database().ref(`/student/${studentId}`);
-      studentRef.remove();
-    };
-
-  
+    
     render() {
       return (
         <div className="app">
+        <Provider inject={[studentContainer]}>
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route
             exact
             path="/roster" 
-            component={() => <Roster students={this.state.students}/>}/>
+            component={Roster}/>
           <Route
             exact
             path="/student/:id"
-            component={(props) => <Student removeStudent={this.removeStudent} {...props}/>}/>
+            component={Student}/>
           <Route 
             path="/new-student" 
-            component={props => <NewStudent {...props} addStudent={this.addStudent}/>} />
+            component={NewStudent} />
         </Switch>
+        </Provider>
         </div>
       )
     }

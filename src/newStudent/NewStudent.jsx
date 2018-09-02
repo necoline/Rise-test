@@ -7,44 +7,24 @@ import StudentForm from './StudentForm';
 
 class NewStudent extends Component {
   
-  state = {
-    student: {}
-  };
-
-  submitEntry = (student) => {
-    this.props.addStudent(student)
-    this.props.history.push('/roster')
-  }
-
-  renderRedirect = () => this.state.redirect ? <Redirect to='/roster' /> : null
-
-  // renderRedirect = () => {  
-  //   if (this.state.redirect) {
-  //     this.props.addStudent(this.state.student)
-  //     return <Redirect to='/roster' />
-  //   } 
-  //     return false;
-    
-  // }  
+  renderRedirect = () => this.state.redirect ? <Redirect to='/roster' /> : null  
 
   render() {
     return (
       <div>
-        {this.renderRedirect()}
+        {/* {this.renderRedirect()} */}
         <Header title={"New Student"}/>
-        <StudentForm />
+        <StudentForm proceedToRoster={() => this.props.history.push('/roster')} />
       </div>
     );
   }
 }
 
 NewStudent.propTypes = {
-  addStudent: PropTypes.func,
   history: PropTypes.func
 };
 
 NewStudent.defaultProps = {
-  addStudent: () => {},
   history: PropTypes.func
 };
 

@@ -22,112 +22,89 @@ class Form extends Component {
   setSubmission = addStudent => (event) => {
     event.preventDefault()
     addStudent(this.state)
+    this.props.proceedToRoster()
   }
 
-  handleFirstNameChange = event => {
-    this.setState({firstName: event.target.value})
-  };
-
-  handleMiddleNameChange = event => {
-    this.setState({middleName: event.target.value})
-  };
-
-  handleLastNameChange = event => {
-    this.setState({lastName: event.target.value})
-  };
-
-  handlePreferredNameChange = event => {
-    this.setState({preferredName: event.target.value})
-  };
-
-  handleGuardianFirstNameChange = event => {
-    this.setState({guardianFirstName: event.target.value})
-  };
-
-  handleGuardianLastNameChange = event => {
-    this.setState({guardianLastName: event.target.value})
-  };
-
-  // handleFirstNameChange = event => {
-  //   this.setState({dob: event.target.value})
-  // };
-  // TODO: select m/d/yr drop downs that are changed into 
-
-  // handleFirstNameChange = event => {
-  //   this.setState({gender: event.target.value})
-  // };
-
-  // handleFirstNameChange = event => {
-  //   this.setState({grade: event.target.value})
-  // };
+  handleChange = ({target}) =>  {
+    this.setState({[target.id]: target.value})
+  }
 
   render() {
     return (
       <div>
         <div className="mdc-layout-grid container">
-          <div className="mdc-layout-grid__inner">
+        <Subscribe to={[StudentContainer]}>{({addStudent}) =>
+          <form className="mdc-layout-grid__inner" onSubmit={this.setSubmission(addStudent)}>
             <div className="mdc-layout-grid__cell">
               <TextField 
-                handleChange={this.handleFirstNameChange} 
-                value={this.state.firstName} 
+                onChange={this.handleChange} 
+                value={this.state.firstName}
+                id={'firstName'}
                 label="First Name"
                 rowRatio="half"/>
               <TextField 
-                handleChange={this.handleMiddleNameChange} 
-                value={this.state.middleName} 
+                onChange={this.handleChange}
+                value={this.state.middleName}
+                id={'middleName'} 
                 label="Middle Name"
                 rowRatio="half"/>
               </div>
               <div className="mdc-layout-grid__cell">
               <TextField 
-                handleChange={this.handleLastNameChange} 
+                onChange={this.handleChange}
                 value={this.state.lastName} 
+                id={'lastName'}
                 label="Last Name"
                 rowRatio="half"/>
               <TextField 
-                handleChange={this.handlePreferredNameChange} 
+                onChange={this.handleChange}
                 value={this.state.preferredName} 
+                id={'preferredName'}
                 label="Preferred Name"
                 rowRatio="half"/>
             </div>
             <div className="mdc-layout-grid__cell">
               <TextField 
-                handleChange={this.handleGuardianFirstNameChange} 
-                value={this.state.guardianFirstName} 
+                onChange={this.handleChange}
+                value={this.state.guardianFirstName}
+                id={'guardianFirstName'}
                 label="Guardian's First Name"
                 rowRatio="half"/>
               <TextField 
-                handleChange={this.handleGuardianLastNameChange} 
-                value={this.state.guardianLastName} 
+                onChange={this.handleChange}
+                value={this.state.guardianLastName}
+                id={'guardianLastName'} 
                 label="Guardian's Last Name"
                 rowRatio="half"/>
             </div>
             {/* <div className="mdc-layout-grid__cell">
               <TextField 
                 handleChange={this.handleDobChange} 
-                value={this.state.dob} 
+                value={this.state.dob}
+                id={'dob'} 
                 label="Date of Birth"
                 rowRatio="third"/>
               <DropDownField 
                 handleChange={this.handleGenderChange} 
-                value={this.state.gender} 
+                value={this.state.gender}
+                id{'gender'} 
                 label="Gender"
                 rowRatio="third"/>
               <DropDownField 
                 handleChange={this.handleGradeChange} 
                 value={this.state.grade} 
+                id={'grade'}
                 label="Grade"
                 rowRatio="third"/>
             </div> */}
 
             <div className="mdc-layout-grid__cell">
-            <Subscribe to={[StudentContainer]}>{({addStudent}) =>
-              <button className="submit-button mdc-button mdc-button--raised" onClick={this.setSubmission(addStudent)}>
+              <button className="submit-button mdc-button mdc-button--raised">
                 Add Student
-              </button>}
-            </Subscribe>
+              </button>
             </div>
-          </div>
+          </form>}
+          </Subscribe>
         </div>
       </div>
     );
@@ -135,11 +112,11 @@ class Form extends Component {
 }
 
 Form.propTypes = {
-  submitEntry: PropTypes.func,
+  proceedToRoster: PropTypes.func
 };
 
 Form.defaultProps = {
-  submitEntry: () => {},
+  proceedToRoster: PropTypes.func
 };
 
 export default Form;

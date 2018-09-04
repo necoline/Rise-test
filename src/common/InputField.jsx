@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TextField = (props) => (
+const InputField = (props) => (
     <div className={`mdc-text-field mdc-text-field--outlined mdc-text-field--upgraded text-field-gutter text-field-${props.rowRatio}-width`}>
         <input 
             type="text" 
             id={props.id} 
             className="mdc-text-field__input"
-            disabled
             placeholder={props.label}
+            onChange={props.onChange}
             value={props.value}
             {...props} />
         <label 
@@ -25,12 +25,16 @@ const TextField = (props) => (
     </div>
 );
 
-TextField.propTypes = {
+InputField.propTypes = {
+    onChange: PropTypes.func,
     value: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     rowRatio: PropTypes.string.isRequired,
 };
 
+InputField.defaultProps = {
+  onChange: () => {},
+};
 
-export default TextField;
+export default InputField;

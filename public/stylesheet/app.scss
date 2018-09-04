@@ -30,7 +30,7 @@ a {
 .row {
   margin: 20px 0;
 }
-
+// ----- BUTTONS ------
 .submit-button {
   @include mdc-button-ink-color($mdc-theme-on-primary);
 }
@@ -54,7 +54,7 @@ font-size: 50px;
 color: $mdc-theme-on-primary;
 }
 
-// ----- form ------
+// ----- FORM ------
 
 // text field
 .above-outline {

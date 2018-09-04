@@ -1,58 +1,48 @@
 import React, { Component } from 'react';
-import { withAuthenticator } from 'aws-amplify-react';
 import { Route, Switch} from 'react-router-dom';
-import { API } from 'aws-amplify';
+import { Provider } from 'unstated';
+
 import Landing from './Landing';
 import Roster from './roster/Roster';
 import NewStudent from './newStudent/NewStudent';
 import Student from './roster/Student';
 
+import StudentContainer from './containers/StudentContainer'
+
+const studentContainer = new StudentContainer
+
+
 class App extends Component {
   state = {
       students: []
     }
-    
+   
     componentDidMount() {
-      API.get('studentsCRUD', '/students').then( students => {
-        this.setState({ students });
-      })
+      studentContainer.fetchAllStudents()
     }
-  
-    addStudent = (student) => {
-      API.post('studentsCRUD', '/students', {body: student}).then( () => {
-        this.setState({ students: [student, ...this.state.students] });
-      })
-    };
-  
-    removeStudent = studentId => {
-      API.del('studentsCRUD', `/students/object/${studentId}`).then( () => {
-        this.setState({
-          students: this.state.students.filter(student => student.id !== studentId),
-        });
-      });
-    };
-
-  
+    
     render() {
       return (
         <div className="app">
+        <Provider inject={[studentContainer]}>
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route
             exact
             path="/roster" 
-            component={() => <Roster students={this.state.students}/>}/>
+            component={Roster}/>
           <Route
             exact
             path="/student/:id"
-            component={(props) => <Student removeStudent={this.removeStudent} {...props}/>}/>
+            component={Student}/>
           <Route 
             path="/new-student" 
-            component={() => <NewStudent addStudent={this.addStudent}/>} />
+            component={NewStudent} />
         </Switch>
+        </Provider>
         </div>
       )
     }
   }
 
-export default withAuthenticator(App);
+export default App;

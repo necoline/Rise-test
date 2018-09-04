@@ -1,45 +1,22 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import { withAuthenticator } from 'aws-amplify-react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../common/Header';
 import StudentForm from './StudentForm';
 
-class NewStudent extends Component {
-  state = {
-    redirect: false
-  };
 
-  setRedirect = () => {
-    this.setState({
-      redirect: true
-    })
-  }
-
-  submitEntry = (student) => {
-    this.props.addStudent(student);
-    this.setRedirect();
-  }
-
-  renderRedirect = () => this.state.redirect ?  <Redirect to='/roster' /> : null;
-
-  render() {
-    return (
+  const NewStudent = (props) => (
       <div>
-        {this.renderRedirect()}
         <Header title={"New Student"}/>
-        <StudentForm submitEntry={this.submitEntry}/>
+        <StudentForm proceedToRoster={() => props.history.push('/roster')} />
       </div>
     );
-  }
-}
 
 NewStudent.propTypes = {
-  addStudent: PropTypes.func,
+  history: PropTypes.obj
 };
 
 NewStudent.defaultProps = {
-  addStudent: () => {},
+  history: PropTypes.obj
 };
 
-export default withAuthenticator(NewStudent);
+export default NewStudent;

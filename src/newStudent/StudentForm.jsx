@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Subscribe } from 'unstated';
+
+import StudentContainer from '../containers/StudentContainer'
 import InputField from '../common/InputField';
 import DropDownField from '../common/DropDownField';
 
@@ -13,104 +16,89 @@ class Form extends Component {
     guardianFirstName: '',
     guardianLastName: '',
     // dob: 0,
-    gender: '',
-    grade: '',
-    race: '',
-    ethnicity: '',
-    nationality: '',
-    countryOfRefuge: '',
-    vulnerabilityStatus: '',
-    teacherName: '',
-    cpaName: '',    
+    // gender: '',
+    // grade: '',
+    // race: '',
+    // ethnicity: '',
+    // nationality: '',
+    // countryOfRefuge: '',
+    // vulnerabilityStatus: '',
+    // teacherName: '',
+    // cpaName: '',    
   };
 
-  setSubmission = () => {
-    this.props.submitEntry(this.state)
-    console.log('student', this.state)
+  setSubmission = addStudent => (event) => {
+    event.preventDefault()
+    addStudent(this.state)
+    this.props.proceedToRoster()
   }
 
-  handleFirstNameChange = event => {
-    this.setState({firstName: event.target.value})
-  };
-
-  handleMiddleNameChange = event => {
-    this.setState({middleName: event.target.value})
-  };
-
-  handleLastNameChange = event => {
-    this.setState({lastName: event.target.value, id: Date.now().toString()})
-  };
-
-  handlePreferredNameChange = event => {
-    this.setState({preferredName: event.target.value})
-  };
-
-  handleGuardianFirstNameChange = event => {
-    this.setState({guardianFirstName: event.target.value})
-  };
-
-  handleGuardianLastNameChange = event => {
-    this.setState({guardianLastName: event.target.value})
-  };
-
-  handleEthnicityChange = event => {
-    this.setState({ethnicity: event.target.value})
-  };
-  // handleFirstNameChange = event => {
-  //   this.setState({dob: event.target.value})
-  // };
-  // TODO: select m/d/yr drop downs that are changed into 
+  handleChange = ({target}) =>  {
+    this.setState({[target.id]: target.value})
+  }
 
   render() {
     return (
       <div>
         <div className="mdc-layout-grid container">
-          <div className="mdc-layout-grid__inner">
+        <Subscribe to={[StudentContainer]}>{({addStudent}) =>
+          <form className="mdc-layout-grid__inner" onSubmit={this.setSubmission(addStudent)}>
             <div className="mdc-layout-grid__cell">
               <InputField 
-                handleChange={this.handleFirstNameChange} 
-                value={this.state.firstName} 
+                onChange={this.handleChange} 
+                value={this.state.firstName}
+                id={'firstName'}
                 label="First Name"
                 rowRatio="half"/>
               <InputField 
-                handleChange={this.handleMiddleNameChange} 
-                value={this.state.middleName} 
+                onChange={this.handleChange}
+                value={this.state.middleName}
+                id={'middleName'} 
                 label="Middle Name"
                 rowRatio="half"/>
               </div>
               <div className="mdc-layout-grid__cell">
+
               <InputField 
-                handleChange={this.handleLastNameChange} 
+                onChange={this.handleChange}
                 value={this.state.lastName} 
+                id={'lastName'}
                 label="Last Name"
                 rowRatio="half"/>
+
               <InputField 
-                handleChange={this.handlePreferredNameChange} 
+                onChange={this.handleChange}
                 value={this.state.preferredName} 
+                id={'preferredName'}
                 label="Preferred Name"
                 rowRatio="half"/>
             </div>
             <div className="mdc-layout-grid__cell">
+
               <InputField 
-                handleChange={this.handleGuardianFirstNameChange} 
-                value={this.state.guardianFirstName} 
+                onChange={this.handleChange}
+                value={this.state.guardianFirstName}
+                id={'guardianFirstName'}
                 label="Guardian's First Name"
                 rowRatio="half"/>
               <InputField 
-                handleChange={this.handleGuardianLastNameChange} 
-                value={this.state.guardianLastName} 
+                onChange={this.handleChange}
+                value={this.state.guardianLastName}
+                id={'guardianLastName'} 
                 label="Guardian's Last Name"
                 rowRatio="half"/>
             </div>
             <div className="mdc-layout-grid__cell">
               {/* <DropDownField 
                 handleChange={this.handleDobChange} 
-                value={this.state.dob} 
+                value={this.state.dob}
+                id={'dob'} 
                 label="Date of Birth"
                 rowRatio="third"/>  */}
               <DropDownField 
                 selected={this.state.gender} 
                 options={["female", "male", "other"]}
+                id={'gender'} 
                 label="Gender"
                 rowRatio="half"/>
               <DropDownField 
@@ -132,11 +120,12 @@ class Form extends Component {
                 rowRatio="half"/>
               </div>
             <div className="mdc-layout-grid__cell">
-              <button className="submit-button mdc-button mdc-button--raised" onClick={this.setSubmission}>
+              <button className="submit-button mdc-button mdc-button--raised">
                 Add Student
               </button>
             </div>
-          </div>
+          </form>}
+          </Subscribe>
         </div>
       </div>
     );
@@ -144,11 +133,11 @@ class Form extends Component {
 }
 
 Form.propTypes = {
-  submitEntry: PropTypes.func,
+  proceedToRoster: PropTypes.func
 };
 
 Form.defaultProps = {
-  submitEntry: () => {},
+  proceedToRoster: PropTypes.func
 };
 
 export default Form;

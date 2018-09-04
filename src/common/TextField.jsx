@@ -5,10 +5,13 @@ const TextField = (props) => (
     <div className={`mdc-text-field mdc-text-field--disabled mdc-text-field--outlined mdc-text-field--upgraded input-field-gutter input-field-${props.rowRatio}-width`}>
         <input 
             type="text" 
-            id="disabled-text-field"
-            disabled 
+
+            id={props.id} 
             className="mdc-text-field__input"
-            value={props.value || ''} />
+            placeholder={props.label}
+            onChange={props.onChange}
+            value={props.value}
+            {...props} />
         <label 
             htmlFor="tf-outlined" 
             className="mdc-floating-label--float-above mdc-floating-label above-outline">
@@ -24,13 +27,17 @@ const TextField = (props) => (
 );
 
 TextField.propTypes = {
-    value: PropTypes.string,
+
+    onChange: PropTypes.func,
+    value: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     rowRatio: PropTypes.string.isRequired,
 };
 
 TextField.defaultProps = {
-    value: '',
-  };
+
+  onChange: () => {},
+};
 
 export default TextField;

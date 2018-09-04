@@ -1,5 +1,4 @@
 import React from 'react';
-import { withAuthenticator } from 'aws-amplify-react';
 import { Link } from "react-router-dom";
 import Header from './common/Header';
 
@@ -28,4 +27,4 @@ const Landing = () => (
   </div>
   );
 
-export default withAuthenticator(Landing);
+export default Landing;

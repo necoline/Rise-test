@@ -1,10 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
+
 import Students from './Students';
 import Header from '../common/Header';
 
-const Roster = (props) => (
+
+const Roster = () => (
   <div>
     <Header title={"Roster"}/>
     <div className="mdc-layout-grid container">
@@ -17,22 +18,11 @@ const Roster = (props) => (
             </Link>
           </div>
         <div className="mdc-layout-grid__cell row">
-          <Students students={props.students}/>
+          <Students />
         </div>
       </div>
     </div>
   </div>
 );
-
-Roster.propTypes = {
-  students: PropTypes.arrayOf(
-      PropTypes.shape({
-        firstName: PropTypes.string.isRequired,
-        lastName: PropTypes.string.isRequired,
-        id: PropTypes.string.isRequired,
-      }),
-    ).isRequired
-  };
-
 
 export default Roster;

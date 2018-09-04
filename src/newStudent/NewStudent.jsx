@@ -1,31 +1,22 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../common/Header';
 import StudentForm from './StudentForm';
 
 
-class NewStudent extends Component {
-  
-  renderRedirect = () => this.state.redirect ? <Redirect to='/roster' /> : null  
-
-  render() {
-    return (
+  const NewStudent = (props) => (
       <div>
-        {/* {this.renderRedirect()} */}
         <Header title={"New Student"}/>
-        <StudentForm proceedToRoster={() => this.props.history.push('/roster')} />
+        <StudentForm proceedToRoster={() => props.history.push('/roster')} />
       </div>
     );
-  }
-}
 
 NewStudent.propTypes = {
-  history: PropTypes.func
+  history: PropTypes.obj
 };
 
 NewStudent.defaultProps = {
-  history: PropTypes.func
+  history: PropTypes.obj
 };
 
 export default NewStudent;

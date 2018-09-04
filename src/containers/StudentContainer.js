@@ -26,23 +26,24 @@ export default class StudentContainer extends Container {
     }
     
     addStudent = (student) => {
-        console.log('new student')
-        // const studentsRef = firebase.database().ref('student');
-        // studentsRef.push(student);
+        const studentsRef = firebase.database().ref('student');
+        studentsRef.push(student);
     };  
 
     removeStudent = studentId => {
-          // this.setState({
-          //   students: this.state.students.filter(student => student.id !== studentId),
-          // });
-  
-        const studentRef = firebase.database().ref(`/student/${studentId}`);
+        this.setState({
+          students: this.state.students.filter(id => this.state.studentHash[id] !== studentId)
+          });
+
+          const studentRef = firebase.database().ref(`/student/${studentId}`);
         studentRef.remove();
+
     };
 
     selectors = {
         getAllStudents: () => this.state.students || [],
-        getStudentData: (id) => this.state.studentHash[id] || {}
+        getStudentData: (id) => this.state.studentHash[id] || {},
+        getAllUnderFive: (ids) => ids.filter(id => this.state.studentHash[id].age < 5)
     }
 
  }

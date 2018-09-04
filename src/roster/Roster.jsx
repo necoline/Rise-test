@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 
 import Students from './Students';
@@ -25,18 +24,5 @@ const Roster = () => (
     </div>
   </div>
 );
-
-Roster.propTypes = {
-  students: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      data: PropTypes.shape({
-        firstName: PropTypes.string,
-        lastName: PropTypes.string
-      }).isRequired
-    }),
-  ).isRequired,
-  };
-
 
 export default Roster;

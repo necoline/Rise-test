@@ -4,8 +4,7 @@ import firebase from '../firebase';
 export default class StudentContainer extends Container {
     state = {
         students: [],
-        studentHash: {},
-        singleStudent: {}
+        studentHash: {}
     }
 
     fetchAllStudents = () => {
@@ -41,21 +40,9 @@ export default class StudentContainer extends Container {
 
     };
 
-    // setSingleStudent = (id, student) => {
-    //     this.setState({
-    //         singleStudent: { id, student }
-    //     })
-    // }
-
     updateStudent = (studentId, studentDetails) => {
-        console.log('update', studentId)
-        console.log('deets', studentDetails)
-        // this.setState({
-        //   students: this.state.students.filter(id => this.state.studentHash[id] !== studentId)
-        //   });
-
         const studentRef = firebase.database().ref(`/student/${studentId}`);
-        studentRef.update({[studentId]: studentDetails});
+        studentRef.update(studentDetails);
 
     };
 

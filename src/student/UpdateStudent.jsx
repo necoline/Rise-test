@@ -31,7 +31,7 @@ class UpdateStudentDetails extends Component {
     event.preventDefault()
     const id = this.props.match.params.id
     updateStudent(id, this.state)
-    // this.props.proceedToRoster()
+    this.props.history.push('/roster')
   }
 
   handleChange = ({target}) =>  {
@@ -127,12 +127,12 @@ UpdateStudentDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.object.isRequired
   }).isRequired,
-  // proceedToRoster: PropTypes.func
+  history: PropTypes.func
 };
 
-// UpdateStudent.defaultProps = {
-//   proceedToRoster: PropTypes.func
-// };
+UpdateStudentDetails.defaultProps = {
+  history: () => {}
+};
 
 
 

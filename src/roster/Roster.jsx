@@ -11,7 +11,7 @@ const Roster = () => (
     <div className="mdc-layout-grid container">
       <div className="mdc-layout-grid__inner">
           <div className="mdc-layout-grid__cell--align-right">
-            <Link to="/new-student">
+            <Link to="/student-form">
               <button className="mdc-fab fab-right" aria-label="add">
                 <span className="mdc-fab__icon material-icons">add</span>
               </button>

@@ -6,6 +6,7 @@ import Landing from './Landing';
 import Roster from './roster/Roster';
 import NewStudent from './newStudent/NewStudent';
 import Student from './roster/Student';
+import UpdateStudent from './student/UpdateStudent';
 
 import StudentContainer from './containers/StudentContainer'
 
@@ -36,7 +37,11 @@ class App extends Component {
               path="/student/:id"
               component={Student} />
             <Route
-              path="/new-student"
+              exact
+              path="/student/:id/edit"
+              component={UpdateStudent} />
+            <Route
+              path="/student-form"
               component={NewStudent} />
           </Switch>
         </Provider>

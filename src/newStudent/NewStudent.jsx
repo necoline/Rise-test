@@ -6,7 +6,7 @@ import StudentForm from './StudentForm';
 
   const NewStudent = (props) => (
       <div>
-        <Header title={"New Student"}/>
+        <Header title={'New Student'}/>
         <StudentForm proceedToRoster={() => props.history.push('/roster')} />
       </div>
     );

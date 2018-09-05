@@ -134,10 +134,4 @@ UpdateStudentDetails.defaultProps = {
   history: () => {}
 };
 
-
-
-export default function UpdateStudent(props) {
-  return <Subscribe to={[StudentContainer]}>{container =>
-  <UpdateStudentDetails studentContainer={container} {...props} />
-  }</Subscribe>
-}
+export default UpdateStudentDetails;

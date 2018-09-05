@@ -3,6 +3,7 @@ import { Subscribe } from 'unstated';
 import PropTypes from 'prop-types';
 
 import firebase from '../firebase';
+import Header from '../common/Header';
 import InputField from '../common/InputField';
 import StudentContainer from '../containers/StudentContainer'
 
@@ -40,6 +41,7 @@ class UpdateStudentDetails extends Component {
   render() {
     return (
       <div>
+        <Header title={'Update Student'}/>
         <div className="mdc-layout-grid container">
         <Subscribe to={[StudentContainer]}>{container =>
           <form className="mdc-layout-grid__inner" onSubmit={this.setSubmission(container.updateStudent)}>

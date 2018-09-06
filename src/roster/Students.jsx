@@ -8,7 +8,7 @@ class Students extends Component {
 
     studentName = (id, container) => {
         const { firstName, lastName } = container.selectors.getStudentData(id)
-        return `${lastName} ${firstName}`
+        return `${lastName}, ${firstName}`
     }
 
   render() {

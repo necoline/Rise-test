@@ -43,8 +43,8 @@ class UpdateStudentDetails extends Component {
       <div>
         <Header title={'Update Student'}/>
         <div className="mdc-layout-grid container">
-        <Subscribe to={[StudentContainer]}>{container =>
-          <form className="mdc-layout-grid__inner" onSubmit={this.setSubmission(container.updateStudent)}>
+        <Subscribe to={[StudentContainer]}>{({updateStudent}) =>
+          <form className="mdc-layout-grid__inner" onSubmit={this.setSubmission(updateStudent)}>
             <div>
               <div className="mdc-layout-grid__cell">
                 <InputField 

@@ -4,8 +4,8 @@ import { Provider } from 'unstated';
 
 import Landing from './Landing';
 import Roster from './roster/Roster';
-import NewStudent from './newStudent/NewStudent';
-import Student from './roster/Student';
+import NewStudent from './student/NewStudent';
+import Student from './student/Student';
 import UpdateStudent from './student/UpdateStudent';
 
 import StudentContainer from './containers/StudentContainer'

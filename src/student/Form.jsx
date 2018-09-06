@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Subscribe } from 'unstated';
 
-import TextField from '../common/TextField';
-import StudentContainer from '../containers/StudentContainer'
+import InputField from '../common/InputField';
 
 
 class Form extends Component {
@@ -19,9 +17,9 @@ class Form extends Component {
     // grade: '',
   };
 
-  setSubmission = addStudent => (event) => {
+  setSubmission = formAction => (event) => {
     event.preventDefault()
-    addStudent(this.state)
+    formAction(this.state)
     this.props.proceedToRoster()
   }
 
@@ -31,18 +29,15 @@ class Form extends Component {
 
   render() {
     return (
-      <div>
-        <div className="mdc-layout-grid container">
-        <Subscribe to={[StudentContainer]}>{({addStudent}) =>
-          <form className="mdc-layout-grid__inner" onSubmit={this.setSubmission(addStudent)}>
+          <form className="mdc-layout-grid__inner" onSubmit={this.setSubmission(this.props.formAction)}>
             <div className="mdc-layout-grid__cell">
-              <TextField 
+              <InputField 
                 onChange={this.handleChange} 
                 value={this.state.firstName}
                 id={'firstName'}
                 label="First Name"
                 rowRatio="half"/>
-              <TextField 
+              <InputField 
                 onChange={this.handleChange}
                 value={this.state.middleName}
                 id={'middleName'} 
@@ -50,13 +45,13 @@ class Form extends Component {
                 rowRatio="half"/>
               </div>
               <div className="mdc-layout-grid__cell">
-              <TextField 
+              <InputField 
                 onChange={this.handleChange}
                 value={this.state.lastName} 
                 id={'lastName'}
                 label="Last Name"
                 rowRatio="half"/>
-              <TextField 
+              <InputField 
                 onChange={this.handleChange}
                 value={this.state.preferredName} 
                 id={'preferredName'}
@@ -64,13 +59,13 @@ class Form extends Component {
                 rowRatio="half"/>
             </div>
             <div className="mdc-layout-grid__cell">
-              <TextField 
+              <InputField 
                 onChange={this.handleChange}
                 value={this.state.guardianFirstName}
                 id={'guardianFirstName'}
                 label="Guardian's First Name"
                 rowRatio="half"/>
-              <TextField 
+              <InputField 
                 onChange={this.handleChange}
                 value={this.state.guardianLastName}
                 id={'guardianLastName'} 
@@ -78,7 +73,7 @@ class Form extends Component {
                 rowRatio="half"/>
             </div>
             {/* <div className="mdc-layout-grid__cell">
-              <TextField 
+              <InputField 
                 handleChange={this.handleDobChange} 
                 value={this.state.dob}
                 id={'dob'} 
@@ -100,19 +95,19 @@ class Form extends Component {
 
             <div className="mdc-layout-grid__cell">
               <button className="submit-button mdc-button mdc-button--raised">
-                Add Student
+                {this.props.submitText}
               </button>
             </div>
-          </form>}
-          </Subscribe>
-        </div>
-      </div>
+          </form>
     );
   }
 }
 
 Form.propTypes = {
+  submitText: PropTypes.string.isRequired,
+  formAction: PropTypes.func.isRequired,
   proceedToRoster: PropTypes.func
+
 };
 
 Form.defaultProps = {

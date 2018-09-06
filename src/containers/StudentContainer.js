@@ -40,6 +40,12 @@ export default class StudentContainer extends Container {
 
     };
 
+    updateStudent = (studentId, studentDetails) => {
+        const studentRef = firebase.database().ref(`/student/${studentId}`);
+        studentRef.update(studentDetails);
+
+    };
+
     selectors = {
         getAllStudents: () => this.state.students || [],
         getStudentData: (id) => this.state.studentHash[id] || {},

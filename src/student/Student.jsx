@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Subscribe } from 'unstated';
+import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
-import Header from '../common/Header';
 import firebase from '../firebase';
 
+import Header from '../common/Header';
 import StudentContainer from '../containers/StudentContainer'
 import TextField from '../common/TextField';
 
@@ -23,15 +24,14 @@ class Student extends Component {
     })
   }
 
-
-  deleteStudent = removeStudent => (event) => {
+  setRemoveStudent = removeStudent => (event) => {
     event.preventDefault()
     removeStudent(this.state.id)
     this.props.history.push('/roster')
   } 
 
   render() {
-    const { student } = this.state
+    const { student, id } = this.state
 
     return student && (
       <div>
@@ -40,10 +40,12 @@ class Student extends Component {
           <div className="mdc-layout-grid__inner">
           <Subscribe to={[StudentContainer]}>{({removeStudent}) =>
             <div className="mdc-layout-grid__cell fab-right">
-              <button className="mdc-fab fab-toolbar" aria-label="add">
+            <Link to={`/student/${id}/edit`}>
+              <button className="mdc-fab fab-toolbar" aria-label="edit">
                 <span className="mdc-fab__icon material-icons">edit</span>
               </button>
-              <button className="mdc-fab fab-toolbar" aria-label="add" onClick={this.deleteStudent(removeStudent)}>
+            </Link>
+              <button className="mdc-fab fab-toolbar" aria-label="remove" onClick={this.setRemoveStudent(removeStudent)}>
                 <span className="mdc-fab__icon material-icons">delete</span>
               </button>
             </div>}

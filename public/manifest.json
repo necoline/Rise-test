@@ -1,0 +1,15 @@
+{
+  "short_name": "RISE",
+  "name": "Connecting aid to refugees",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/?utm_source=homescreen",
+  "display": "standalone",
+  "theme_color": "#FFFFFF",
+  "background_color": "#039BE5"
+}

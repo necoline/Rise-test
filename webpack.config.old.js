@@ -1,8 +1,21 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
-const autoprefixer = require('autoprefixer');
 const path = require('path');
+const autoprefixer = require('autoprefixer');
+const webpack = require('webpack');
 
 const config = {
+  context: __dirname,
+  entry: [
+    'react-hot-loader/patch',
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
+    './public/stylesheet/app.scss',
+    './src/index.jsx'
+  ],
+  devtool: 'cheap-eval-source-map',
+  output: {
+    path: path.join(__dirname, 'public'),
+    filename: 'bundle.js'
+  },
   devServer: {
     publicPath: '/public/',
     historyApiFallback: true
@@ -15,23 +28,18 @@ const config = {
     reasons: true,
     chunks: true
   },
+  plugins: [new webpack.HotModuleReplacementPlugin(), new webpack.NamedModulesPlugin()],
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
-        }
+        enforce: 'pre',
+        test: /\.jsx?$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/
       },
       {
-        test: /\.html$/,
-        use: [
-          {
-            loader: "html-loader",
-            options: { minimize: true }
-          }
-        ]
+        test: /\.jsx?$/,
+        loader: 'babel-loader'
       },
       {
         test: /\.scss$/,
@@ -57,17 +65,13 @@ const config = {
           }],
       },
     ]
-  },
-  plugins: [
-    new HtmlWebPackPlugin({
-      template: "./src/index.html",
-      filename: "./index.html"
-    }),
-    new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
-    })
-  ]
+  }
 };
+
+if (process.env.NODE_ENV === 'production') {
+  config.entry = './src/index.jsx';
+  config.devtool = false;
+  config.plugins = [];
+}
 
 module.exports = config;

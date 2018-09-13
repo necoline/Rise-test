@@ -1,3 +1,4 @@
+/*eslint-disable */
 import { Container } from 'unstated';
 import firebase from '../firebase';
 
@@ -53,3 +54,4 @@ export default class StudentContainer extends Container {
     }
 
  }
+/*eslint-disable */

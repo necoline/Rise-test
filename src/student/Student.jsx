@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React, { Component } from 'react';
 import { Subscribe } from 'unstated';
 import { Link } from "react-router-dom";
@@ -105,3 +106,4 @@ Student.propTypes = {
   };
 
 export default Student;
+/*eslint-disable */

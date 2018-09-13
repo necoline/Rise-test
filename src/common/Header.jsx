@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -22,3 +23,4 @@ Header.propTypes = {
 };
 
 export default Header;
+/*eslint-disable */

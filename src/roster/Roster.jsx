@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React from 'react';
 import { Link } from "react-router-dom";
 
@@ -26,3 +27,4 @@ const Roster = () => (
 );
 
 export default Roster;
+/*eslint-disable */

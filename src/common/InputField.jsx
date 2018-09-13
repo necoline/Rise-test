@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -38,3 +39,4 @@ InputField.defaultProps = {
 };
 
 export default InputField;
+/*eslint-disable */

@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React, { Component } from 'react';
 import { Subscribe } from 'unstated';
 import PropTypes from 'prop-types';
@@ -135,3 +136,4 @@ UpdateStudentDetails.defaultProps = {
 };
 
 export default UpdateStudentDetails;
+/*eslint-disable */

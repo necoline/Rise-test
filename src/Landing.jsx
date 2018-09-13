@@ -4,22 +4,22 @@ import Header from './common/Header';
 
 const Landing = () => (
   <div>
-    <Header title={"RISE"}/>
+    <Header title="RISE"/>
     <div className="mdc-layout-grid container">
       <div className="mdc-layout-grid__inner">
         <div className="mdc-layout-grid__cell row">
           <Link to="/">
-            <button className="mdc-button mdc-button--raised">Attendance</button>
+            <button type="submit" className="mdc-button mdc-button--raised">Attendance</button>
           </Link>
         </div>
         <div className="mdc-layout-grid__cell row">
           <Link to="/roster">
-            <button className="mdc-button mdc-button--raised">Roster</button>
+            <button type="submit" className="mdc-button mdc-button--raised">Roster</button>
           </Link>
         </div>
         <div className="mdc-layout-grid__cell row">
           <Link to="/">
-            <button className="mdc-button mdc-button--raised">Reports</button>
+            <button type="submit" className="mdc-button mdc-button--raised">Reports</button>
           </Link>
         </div>
       </div>

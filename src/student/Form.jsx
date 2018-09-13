@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
@@ -115,3 +116,4 @@ Form.defaultProps = {
 };
 
 export default Form;
+/*eslint-disable */

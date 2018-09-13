@@ -14,9 +14,9 @@ const studentContainer = new StudentContainer
 
 
 class App extends Component {
-  state = {
-    students: []
-  }
+  // state = {
+  //   students: []
+  // }
 
   componentDidMount() {
     studentContainer.fetchAllStudents()

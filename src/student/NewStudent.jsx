@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Subscribe } from 'unstated';
@@ -26,3 +27,4 @@ NewStudent.defaultProps = {
 };
 
 export default NewStudent;
+/*eslint-disable */

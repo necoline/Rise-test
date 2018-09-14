@@ -47,8 +47,7 @@ a {
 
 @include desktop {
   .container {
-    padding-top: 7%;
-    text-align: center;
+    padding-top: 5%;
   }
 
   .row {
@@ -60,8 +59,19 @@ a {
     margin: 0 auto;
     font-size: 50px;
     color: $mdc-theme-on-primary;
-    }
+  }
+  
+  .page-header {
+    display: inline;
+  }
 
+  .page-title {
+    font-size: 50px;
+    color: $mdc-theme-primary;
+    margin-left: 5%;
+    width: 30px;
+
+  }
 // ----- BUTTONS ------
   .submit-button {
     @include mdc-button-ink-color($mdc-theme-on-primary);
@@ -73,20 +83,25 @@ a {
   }
 
   .fab-right {
-    margin-left: 85%;
+    float: right;
+    margin-right: 5%;
   }
 
   .fab-toolbar {
     margin: 0 5px;
   }
 
-
+  .form {
+    display: grid;
+    grid-gap: 25px;
+    grid-template-columns: 1fr 1fr;
+    margin: 2% 10%;
+  }
 }
 
 @include tablet {
   .container {
     padding-top: 10%;
-    text-align: center;
   }
 
   .row {
@@ -123,7 +138,6 @@ a {
 @include phone {
   .container {
     padding-top: 20%;
-    text-align: center;
   }
 
   .row {
@@ -168,14 +182,6 @@ a {
   margin: 0 1%;
 }
 
-.text-field-half-width {
-  width: 40%;
-}
-
-.text-field-third-width {
-  width: 25%;
-}
-
-.text-field-full-width {
-  width: 80%;
+.mdc-text-field {
+  width: 100%;
 }

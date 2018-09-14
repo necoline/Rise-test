@@ -39,7 +39,7 @@ class Student extends Component {
         <div className="mdc-layout-grid container">
           <div className="mdc-layout-grid__inner">
           <Subscribe to={[StudentContainer]}>{({removeStudent}) =>
-            <div className="mdc-layout-grid__cell fab-right">
+            <div className="mdc-layout-grid__cell">
             <Link to={`/student/${id}/edit`}>
               <button className="mdc-fab fab-toolbar" aria-label="edit">
                 <span className="mdc-fab__icon material-icons">edit</span>
@@ -49,42 +49,44 @@ class Student extends Component {
                 <span className="mdc-fab__icon material-icons">delete</span>
               </button>
             </div>}
-        </Subscribe>  
-            <div className="mdc-layout-grid__cell">
-              <TextField 
+         </Subscribe>  
+             <div className="mdc-layout-grid__cell form">
+             <div className="text-field-large">
+             <TextField 
                 value={student.firstName}
-                id={'firstName'} 
-                label="First Name"
-                rowRatio="half"/>
+                id='firstName' 
+                label="First Name"/>
+             </div>
+             <div className="text-field-large">
               <TextField 
                 value={student.middleName}
-                id={'middleName'} 
-                label="Middle Name"
-                rowRatio="half"/>
+                id='middleName' 
+                label="Middle Name"/>
               </div>
-              <div className="mdc-layout-grid__cell">
+              <div className="text-field-large">
               <TextField 
                 value={student.lastName}
-                id={'lastName'} 
-                label="Last Name"
-                rowRatio="half"/>
+                id='lastName'
+                label="Last Name"/>
+              </div>
+              <div className="text-field-large">
               <TextField 
                 value={student.preferredName}
-                id={'preferredName'} 
-                label="Preferred Name"
-                rowRatio="half"/>
+                id='preferredName' 
+                label="Preferred Name"/>
             </div>
-            <div className="mdc-layout-grid__cell">
+            <div className="text-field-large">
               <TextField 
                 value={student.guardianFirstName}
-                id={'guardianFirstName'} 
-                label="Guardian's First Name"
-                rowRatio="half"/>
+                id='guardianFirstName' 
+                label="Guardian's First Name"/>
+              </div>
+              <div className="text-field-large">
               <TextField 
                 value={student.guardianLastName}
-                id={'guardianLastName'} 
-                label="Guardian's Last Name"
-                rowRatio="half"/>
+                id='guardianLastName' 
+                label="Guardian's Last Name"/>
+              </div>
             </div>
           </div>
         </div>
@@ -104,4 +106,6 @@ Student.propTypes = {
     history: PropTypes.func
   };
 
+
 export default Student;
+

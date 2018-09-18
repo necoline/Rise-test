@@ -45,6 +45,11 @@ a {
   text-decoration: none;
 }
 
+.grid-center {
+  display: grid;
+  justify-items: center;
+}
+
 @include desktop {
   .container {
     padding-top: 5%;
@@ -132,6 +137,14 @@ a {
   .fab-toolbar {
     margin: 0 5px;
   }
+
+// ----- FORM ------
+  .form {
+    display: grid;
+    grid-gap: 25px;
+    grid-template-columns: 1fr 1fr;
+    margin: 2% 10%;
+  }
   
 }
 
@@ -167,6 +180,14 @@ a {
 
   .fab-toolbar {
     margin: 0 5px;
+  }
+
+ // ----- FORM ------
+  .form {
+    display: grid;
+    grid-gap: 25px;
+    grid-template-columns: 1fr;
+    margin: 2% 10%;
   }
 }
 

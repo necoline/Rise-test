@@ -13,6 +13,29 @@ $mdc-typography-font-family: "Arial";
 @import "@material/top-app-bar/mdc-top-app-bar";
 @import "@material/fab/mdc-fab";
 
+$phone-width: 320px; 
+$tablet-width: 768px; 
+$desktop-width: 1024px;
+
+@mixin phone {
+  @media (min-width: #{$phone-width}) and (max-width: #{$tablet-width - 10px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+
 body {
   margin: 0;
   font-family: $mdc-typography-font-family;
@@ -22,36 +45,13 @@ a {
   text-decoration: none;
 }
 
-.container {
-  padding-top: 80px;
-  text-align: center;
+.grid-center {
+  display: grid;
+  justify-items: center;
 }
 
 .row {
   margin: 20px 0;
-}
-// ----- BUTTONS ------
-.submit-button {
-  @include mdc-button-ink-color($mdc-theme-on-primary);
-}
-
-.delete-btn {
-  margin-left: 80%;
-  @include mdc-button-ink-color($mdc-theme-on-primary);
-}
-
-.fab-right {
-  margin-left: 90%;
-}
-
-.fab-toolbar {
-  margin: 0 5px;
-}
-
-.title {
-margin: 0 auto;
-font-size: 50px;
-color: $mdc-theme-on-primary;
 }
 
 // ----- FORM ------
@@ -65,14 +65,140 @@ color: $mdc-theme-on-primary;
   margin: 0 1%;
 }
 
-.text-field-half-width {
-  width: 40%;
+.mdc-text-field {
+  width: 100%;
 }
 
-.text-field-third-width {
-  width: 25%;
+// ------------------------------------------------ RESPONSIVENES ------------------------------------------------
+// --------------------------------------------------- DESKTOP --------------------------------------------------
+@include desktop {
+  .container {
+    padding-top: 5%;
+  }
+
+// ----- HEADER -----
+  .title {
+    margin: 0 auto;
+    font-size: 50px;
+    color: $mdc-theme-on-primary;
+  }
+  
+  .page-header {
+    display: inline;
+  }
+
+  .page-title {
+    font-size: 50px;
+    color: $mdc-theme-primary;
+    margin-left: 5%;
+    width: 30px;
+  }
+
+// ----- BUTTONS ------
+  .submit-button {
+    @include mdc-button-ink-color($mdc-theme-on-primary);
+  }
+
+  .delete-btn {
+    margin-left: 80%;
+    @include mdc-button-ink-color($mdc-theme-on-primary);
+  }
+
+  .fab-right {
+    float: right;
+    margin-right: 5%;
+  }
+
+  .fab-toolbar {
+    margin: 0 5px;
+  }
+
+  .form {
+    display: grid;
+    grid-gap: 25px;
+    grid-template-columns: 1fr 1fr;
+    margin: 2% 10%;
+  }
 }
 
-.text-field-full-width {
-  width: 80%;
+// ------------------------------------------------ TABLET ------------------------------------------------
+@include tablet {
+  .container {
+    padding-top: 10%;
+  }
+
+// ----- HEADER -----
+  .title {
+    margin: 0 auto;
+    font-size: 40px;
+    color: $mdc-theme-on-primary;
+  }
+
+// ----- FORM ------
+  .form {
+    display: grid;
+    grid-gap: 25px;
+    grid-template-columns: 1fr 1fr;
+    margin: 2% 10%;
+  }  
+
+// ----- BUTTONS ------
+  .submit-button {
+    @include mdc-button-ink-color($mdc-theme-on-primary);
+  }
+
+  .delete-btn {
+    margin-left: 80%;
+    @include mdc-button-ink-color($mdc-theme-on-primary);
+  }
+
+  .fab-right {
+    margin-left: 65%;
+  }
+
+  .fab-toolbar {
+    margin: 0 5px;
+  }
+}
+
+// ------------------------------------------------ PHONE ------------------------------------------------
+@include phone {
+  .container {
+    padding-top: 20%;
+  }
+
+// ----- HEADER -----
+  .title {
+    margin: 0 auto;
+    font-size: 30px;
+    color: $mdc-theme-on-primary;
+  }
+
+// ----- BUTTONS ------
+  .submit-button {
+    @include mdc-button-ink-color($mdc-theme-on-primary);
+  }
+
+  .delete-btn {
+    margin-left: 80%;
+    @include mdc-button-ink-color($mdc-theme-on-primary);
+  }
+
+  .fab-right {
+    margin: 0 0 5% 40%;
+  }
+
+  .fab-toolbar {
+    margin: 0 5px;
+    background-color: purple;
+  }
+
+ // ----- FORM ------
+ .form {
+    display: grid;
+    grid-gap: 25px;
+    grid-template-columns: 1fr;
+    margin: 2% 10%;
+  }
+
 }

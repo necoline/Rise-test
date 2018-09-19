@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const TextField = (props) => (
-    <div className={`mdc-text-field mdc-text-field--outlined mdc-text-field--upgraded text-field-gutter text-field-${props.rowRatio}-width`}>
+<div className={`mdc-text-field mdc-text-field--outlined mdc-text-field--upgraded text-field-gutter`}>
         <input 
             type="text" 
             id={props.id} 
@@ -28,8 +28,7 @@ const TextField = (props) => (
 TextField.propTypes = {
     value: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    rowRatio: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired
 };
 
 

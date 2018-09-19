@@ -7,10 +7,11 @@ import Header from '../common/Header';
 
 const Roster = () => (
   <div>
-    <Header title={"Roster"}/>
+    <Header title="Roster"/>
     <div className="mdc-layout-grid container">
       <div className="mdc-layout-grid__inner">
-          <div className="mdc-layout-grid__cell--align-right">
+          <div className="mdc-layout-grid__cell page-header">
+            <span className='page-title'> Standard 1 </span>
             <Link to="/student-form">
               <button className="mdc-fab fab-right" aria-label="add">
                 <span className="mdc-fab__icon material-icons">add</span>

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const InputField = (props) => (
-    <div className={`mdc-text-field mdc-text-field--outlined mdc-text-field--upgraded text-field-gutter`}>
+    <div className={`${props.size} mdc-text-field mdc-text-field--outlined mdc-text-field--upgraded text-field-gutter`}>
         <input 
             type="text" 
             id={props.id} 
@@ -29,6 +29,7 @@ InputField.propTypes = {
     onChange: PropTypes.func,
     value: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
+    size: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
 };
 

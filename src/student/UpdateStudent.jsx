@@ -45,20 +45,19 @@ class UpdateStudentDetails extends Component {
         <div className="mdc-layout-grid container">
         <Subscribe to={[StudentContainer]}>{({updateStudent}) =>
           <form className="mdc-layout-grid__inner" onSubmit={this.setSubmission(updateStudent)}>
-            <div>
               <div className="mdc-layout-grid__cell form">
                 <InputField 
-                  onChange={this.handleChange} 
+                  onChange={this.handleChange}
                   value={this.state.firstName}
                   id={'firstName'}
+                  size={'input-large'} 
                   label="First Name"/>
                 <InputField 
                   onChange={this.handleChange}
                   value={this.state.middleName}
                   id={'middleName'} 
+                  size={'input-large'} 
                   label="Middle Name"/>
-                </div>
-                <div className="mdc-layout-grid__cell">
                 <InputField 
                   onChange={this.handleChange}
                   value={this.state.lastName} 
@@ -69,8 +68,6 @@ class UpdateStudentDetails extends Component {
                   value={this.state.preferredName} 
                   id={'preferredName'}
                   label="Preferred Name"/>
-              </div>
-              <div className="mdc-layout-grid__cell">
                 <InputField 
                   onChange={this.handleChange}
                   value={this.state.guardianFirstName}
@@ -82,25 +79,6 @@ class UpdateStudentDetails extends Component {
                   id={'guardianLastName'} 
                   label="Guardian's Last Name"/>
               </div>
-              {/* <div className="mdc-layout-grid__cell">
-                <InputField 
-                  handleChange={this.handleDobChange} 
-                  value={this.state.dob}
-                  id={'dob'} 
-                  label="Date of Birth"/>
-                <DropDownField 
-                  handleChange={this.handleGenderChange} 
-                  value={this.state.gender}
-                  id{'gender'} 
-                  label="Gender"/>
-                <DropDownField 
-                  handleChange={this.handleGradeChange} 
-                  value={this.state.grade} 
-                  id={'grade'}
-                  label="Grade"/>
-              </div> */}
-            </div>
-
             <div className="mdc-layout-grid__cell grid-center">
               <button type="submit" className="submit-button mdc-button mdc-button--raised">
                 Save Changes

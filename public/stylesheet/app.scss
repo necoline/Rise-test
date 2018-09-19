@@ -18,7 +18,7 @@ $tablet-width: 768px;
 $desktop-width: 1024px;
 
 @mixin phone {
-  @media (min-width: #{$phone-width}) and (max-width: #{$tablet-width - 1px}) {
+  @media (min-width: #{$phone-width}) and (max-width: #{$tablet-width - 10px}) {
     @content;
   }
 }
@@ -50,13 +50,30 @@ a {
   justify-items: center;
 }
 
+.row {
+  margin: 20px 0;
+}
+
+// ----- FORM ------
+
+// text field
+.above-outline {
+  margin-bottom: 10px;
+}
+
+.text-field-gutter {
+  margin: 0 1%;
+}
+
+.mdc-text-field {
+  width: 100%;
+}
+
+// ------------------------------------------------ RESPONSIVENES ------------------------------------------------
+// --------------------------------------------------- DESKTOP --------------------------------------------------
 @include desktop {
   .container {
     padding-top: 5%;
-  }
-
-  .row {
-    margin: 20px 0;
   }
 
 // ----- HEADER -----
@@ -75,8 +92,8 @@ a {
     color: $mdc-theme-primary;
     margin-left: 5%;
     width: 30px;
-
   }
+
 // ----- BUTTONS ------
   .submit-button {
     @include mdc-button-ink-color($mdc-theme-on-primary);
@@ -104,13 +121,10 @@ a {
   }
 }
 
+// ------------------------------------------------ TABLET ------------------------------------------------
 @include tablet {
   .container {
     padding-top: 10%;
-  }
-
-  .row {
-    margin: 20px 0;
   }
 
 // ----- HEADER -----
@@ -119,6 +133,14 @@ a {
     font-size: 40px;
     color: $mdc-theme-on-primary;
   }
+
+// ----- FORM ------
+  .form {
+    display: grid;
+    grid-gap: 25px;
+    grid-template-columns: 1fr 1fr;
+    margin: 2% 10%;
+  }  
 
 // ----- BUTTONS ------
   .submit-button {
@@ -137,24 +159,12 @@ a {
   .fab-toolbar {
     margin: 0 5px;
   }
-
-// ----- FORM ------
-  .form {
-    display: grid;
-    grid-gap: 25px;
-    grid-template-columns: 1fr 1fr;
-    margin: 2% 10%;
-  }
-  
 }
 
+// ------------------------------------------------ PHONE ------------------------------------------------
 @include phone {
   .container {
     padding-top: 20%;
-  }
-
-  .row {
-    margin: 20px 0;
   }
 
 // ----- HEADER -----
@@ -180,29 +190,15 @@ a {
 
   .fab-toolbar {
     margin: 0 5px;
+    background-color: purple;
   }
 
  // ----- FORM ------
-  .form {
+ .form {
     display: grid;
     grid-gap: 25px;
     grid-template-columns: 1fr;
     margin: 2% 10%;
   }
-}
 
-
-// ----- FORM ------
-
-// text field
-.above-outline {
-  margin-bottom: 10px;
-}
-
-.text-field-gutter {
-  margin: 0 1%;
-}
-
-.mdc-text-field {
-  width: 100%;
 }

@@ -51,42 +51,30 @@ class Student extends Component {
             </div>}
          </Subscribe>  
              <div className="mdc-layout-grid__cell form">
-             <div className="text-field-large">
              <TextField 
                 value={student.firstName}
                 id='firstName' 
                 label="First Name"/>
-             </div>
-             <div className="text-field-large">
               <TextField 
                 value={student.middleName}
                 id='middleName' 
                 label="Middle Name"/>
-              </div>
-              <div className="text-field-large">
               <TextField 
                 value={student.lastName}
                 id='lastName'
                 label="Last Name"/>
-              </div>
-              <div className="text-field-large">
               <TextField 
                 value={student.preferredName}
                 id='preferredName' 
                 label="Preferred Name"/>
-            </div>
-            <div className="text-field-large">
               <TextField 
                 value={student.guardianFirstName}
                 id='guardianFirstName' 
                 label="Guardian's First Name"/>
-              </div>
-              <div className="text-field-large">
               <TextField 
                 value={student.guardianLastName}
                 id='guardianLastName' 
                 label="Guardian's Last Name"/>
-              </div>
             </div>
           </div>
         </div>
